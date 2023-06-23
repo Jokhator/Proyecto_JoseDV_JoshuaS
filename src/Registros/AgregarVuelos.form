@@ -43,69 +43,60 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jLabel6" min="-2" pref="131" max="-2" attributes="0"/>
-                                              <Component id="jLabel4" min="-2" pref="131" max="-2" attributes="0"/>
-                                              <Component id="jLabel1" min="-2" pref="131" max="-2" attributes="0"/>
-                                              <Component id="jLabel3" min="-2" pref="131" max="-2" attributes="0"/>
-                                              <Component id="jLabel5" min="-2" pref="131" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="jLabel7" min="-2" pref="131" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="txt_destino" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
-                                                      <Component id="txt_origen" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
-                                                      <Component id="txt_idCopiloto" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
-                                                      <Component id="txt_idPiloto" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
-                                                      <Component id="txt_idAvion" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
-                                                      <Component id="txt_aeropuertoSalida" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
-                                                      <Component id="txt_costoBoleto" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
-                                                      <Component id="txt_capacidad" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
-                                                      <Component id="txt_aeropuertoEntrada" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
-                                                      <Component id="txt_costoTotal" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                                                  <Component id="txt_idVuelo" min="-2" pref="210" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="btn_Eliminar" min="-2" pref="112" max="-2" attributes="0"/>
-                                                  <Component id="btn_Modificar" min="-2" pref="112" max="-2" attributes="0"/>
-                                                  <Component id="btn_BuscarN" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="btn_BuscarID" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
-                                                  <Component id="btn_Mostrar" min="-2" pref="112" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="btn_Agregar" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jLabel6" min="-2" pref="131" max="-2" attributes="0"/>
+                                          <Component id="jLabel4" min="-2" pref="131" max="-2" attributes="0"/>
+                                          <Component id="jLabel1" min="-2" pref="131" max="-2" attributes="0"/>
+                                          <Component id="jLabel3" min="-2" pref="131" max="-2" attributes="0"/>
+                                          <Component id="jLabel5" min="-2" pref="131" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jLabel7" min="-2" pref="131" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txt_destino" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+                                                  <Component id="txt_origen" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+                                                  <Component id="txt_idCopiloto" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+                                                  <Component id="txt_idPiloto" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+                                                  <Component id="txt_idAvion" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+                                                  <Component id="txt_aeropuertoSalida" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+                                                  <Component id="txt_costoBoleto" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+                                                  <Component id="txt_capacidad" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+                                                  <Component id="txt_aeropuertoEntrada" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+                                                  <Component id="txt_costoTotal" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                                              <Component id="txt_idVuelo" min="-2" pref="210" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="btn_Eliminar" min="-2" pref="112" max="-2" attributes="0"/>
+                                              <Component id="btn_Modificar" min="-2" pref="112" max="-2" attributes="0"/>
+                                              <Component id="btn_BuscarN" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btn_BuscarID" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                                              <Component id="btn_Mostrar" min="-2" pref="112" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="btn_Agregar" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace pref="252" max="32767" attributes="0"/>
-                                  <Component id="cmb_Edad" min="-2" pref="115" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel11" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
-                                      <Component id="jLabel12" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel11" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
+                              <Component id="jLabel12" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace pref="373" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jScrollPane1" max="32767" attributes="0"/>
@@ -123,7 +114,6 @@
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txt_idVuelo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_Agregar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmb_Edad" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -207,19 +197,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_idPilotoActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmb_Edad">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmb_EdadActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>

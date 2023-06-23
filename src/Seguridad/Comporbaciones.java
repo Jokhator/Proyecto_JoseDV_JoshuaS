@@ -5,6 +5,7 @@
 package Seguridad;
 
 import Registros.Empleado;
+import Registros.ListaClientes;
 import javax.swing.JOptionPane;
 import Registros.ListaEmpleados;
 import Registros.ListaVuelos;
@@ -79,6 +80,25 @@ public class Comporbaciones {
             }
             JOptionPane.showMessageDialog(form, "No se encontró ningún empleado con la ID especificada.");
             return null; // Retorna null si no se encuentra el empleado
+        }
+    }
+    
+    public boolean existeCliente(javax.swing.JFrame form, String pasaporte) {
+        if (ListaClientes.getInstancia().getListaClientes().isEmpty()) {
+            return false;
+        } else {
+            int cont = 0;
+            for (int i = 0; i < ListaClientes.getInstancia().getListaClientes().size(); i++) {
+                if (!ListaClientes.getInstancia().getListaClientes().get(i).getPasaporte().equals(pasaporte)) {
+                    cont++;
+                }
+            }
+            if (cont == ListaClientes.getInstancia().getListaClientes().size()) {
+                return false;
+            } else {
+                JOptionPane.showMessageDialog(form, "No robe indentidades");
+                return true;
+            }
         }
     }
 

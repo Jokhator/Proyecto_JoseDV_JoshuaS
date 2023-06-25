@@ -8,6 +8,8 @@ import SampleClasses.Empleado;
 import Listas.ListaClientes;
 import javax.swing.JOptionPane;
 import Listas.ListaEmpleados;
+import Listas.ListaUsuarios;
+import SampleClasses.Usuario;
 
 /**
  * @author Jose Daniel Vargas C
@@ -79,6 +81,39 @@ public class Comprobaciones {
             }
             JOptionPane.showMessageDialog(form, "No se encontró ningún empleado con la ID especificada.");
             return null; // Retorna null si no se encuentra el empleado
+        }
+    }
+
+    public boolean existeCliente(javax.swing.JFrame form, String pasaporte) {
+        if (ListaClientes.getInstancia().getListaClientes().isEmpty()) {
+            return false;
+        } else {
+            int cont = 0;
+            for (int i = 0; i < ListaClientes.getInstancia().getListaClientes().size(); i++) {
+                if (!ListaClientes.getInstancia().getListaClientes().get(i).getPasaporte().equals(pasaporte)) {
+                    cont++;
+                }
+            }
+            if (cont == ListaClientes.getInstancia().getListaClientes().size()) {
+                return false;
+            } else {
+                JOptionPane.showMessageDialog(form, "Cliente encontrado.");
+                return true;
+            }
+        }
+    }
+    
+    public boolean existeUsuario(javax.swing.JFrame form, String username) {
+        if (ListaUsuarios.getInstancia().getListaUsuarios().isEmpty()) {
+            return false;
+        } else {
+            for (Usuario usuario : ListaUsuarios.getInstancia().getListaUsuarios()) {
+                if (usuario.getUser().equals(username)) {
+                    JOptionPane.showMessageDialog(form, "Usuario encontrado.");
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

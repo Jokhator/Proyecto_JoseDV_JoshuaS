@@ -6,13 +6,15 @@ package Compra;
 
 import Listas.ListaClientes;
 import javax.swing.JOptionPane;
+import Seguridad.Comprobaciones;
 
 /**
  *
  * @author jdvc, jgsm
  */
 public class CompraVuelo extends javax.swing.JFrame {
-    ListaClientes lista = ListaClientes.getInstancia();
+    ListaClientes listaClientes = ListaClientes.getInstancia();
+    Comprobaciones comprobaciones = new Comprobaciones();
 
     /**
      * Creates new form CompraVuelo
@@ -194,7 +196,7 @@ public class CompraVuelo extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_PaisDestinoActionPerformed
 
     private void btn_MostrarVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MostrarVuelosActionPerformed
-        if (lista.existeCliente(this, txt_Pasaporte.getText())) {
+        if (comprobaciones.existeCliente(this, txt_Pasaporte.getText())) {
             
         } else {
             JOptionPane.showMessageDialog(this, "El pasaporte digitado no coincide con ningun cliente registrado en el sistema.\n"

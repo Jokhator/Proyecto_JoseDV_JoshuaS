@@ -75,24 +75,5 @@ public class ListaClientes {
         } catch (IOException e) {
             System.err.println("Error al guardar los clientes en el archivo " + nombreArchivo + ": " + e.getMessage());
         }
-    }
-    
-    public boolean existeCliente(javax.swing.JFrame form, String pasaporte) {
-        if (ListaClientes.getInstancia().getListaClientes().isEmpty()) {
-            return false;
-        } else {
-            int cont = 0;
-            for (int i = 0; i < ListaClientes.getInstancia().getListaClientes().size(); i++) {
-                if (!ListaClientes.getInstancia().getListaClientes().get(i).getPasaporte().equals(pasaporte)) {
-                    cont++;
-                }
-            }
-            if (cont == ListaClientes.getInstancia().getListaClientes().size()) {
-                return false;
-            } else {
-                JOptionPane.showMessageDialog(form, "Cliente encontrado.");
-                return true;
-            }
-        }
-    }
+    } 
 }

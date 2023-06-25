@@ -6,28 +6,29 @@ package Mantenimiento;
 
 import SampleClasses.Cliente;
 import Listas.ListaClientes;
+import Listas.ListaUsuarios;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import Seguridad.Comprobaciones;
+import SampleClasses.Usuario;
 
 /**
  *
  * @author jdvc, jgsm
  */
-public class RegistroClientes extends javax.swing.JFrame {
+public class RegistroUsuarios extends javax.swing.JFrame {
 
     /**
      * Creates new form AgregarEmpleados
      */
-    ListaClientes listaClientes = ListaClientes.getInstancia();
+    ListaUsuarios listaUsuarios = ListaUsuarios.getInstancia();
     DefaultTableModel modeloTabla;
     Comprobaciones comporbaciones = new Comprobaciones();
 
-    public RegistroClientes() {
+    public RegistroUsuarios() {
         initComponents();
-        cmbEdad();
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -37,19 +38,12 @@ public class RegistroClientes extends javax.swing.JFrame {
         });
     }
 
-    public void cmbEdad() {
-        for (int i = 20; i <= 120; i++) {
-            String num = String.valueOf(i);
-            cmb_Edad.addItem(num);
-
-        }
-    }
 
     private void confirmarCierreVentana() {
         // Aquí puedes mostrar un mensaje de confirmación y realizar acciones adicionales antes de cerrar la ventana
         int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas cerrar la ventana?", "Confirmar cierre", javax.swing.JOptionPane.YES_NO_OPTION);
         if (opcion == javax.swing.JOptionPane.YES_OPTION) {
-            listaClientes.write();
+            listaUsuarios.write();
             dispose(); // Cerrar la ventana
         }
     }
@@ -65,16 +59,12 @@ public class RegistroClientes extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txt_pasaporte = new javax.swing.JTextField();
-        txt_Nombre = new javax.swing.JTextField();
-        cmb_Edad = new javax.swing.JComboBox<>();
+        txt_idEmpleado = new javax.swing.JTextField();
+        txt_usuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        txt_Telefono = new javax.swing.JTextField();
-        txt_nacionalidad = new javax.swing.JTextField();
+        txt_confirmarCont = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_Clientes = new javax.swing.JTable();
         btn_Agregar = new javax.swing.JButton();
@@ -83,50 +73,32 @@ public class RegistroClientes extends javax.swing.JFrame {
         btn_BuscarN = new javax.swing.JButton();
         btn_Eliminar = new javax.swing.JButton();
         btn_Mostrar = new javax.swing.JButton();
-        txt_correo = new javax.swing.JTextField();
+        txt_contrasenia = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
-        jLabel1.setText("Nombre:");
+        jLabel1.setText("Usuario:");
 
-        txt_Nombre.addActionListener(new java.awt.event.ActionListener() {
+        txt_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_NombreActionPerformed(evt);
-            }
-        });
-
-        cmb_Edad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_EdadActionPerformed(evt);
+                txt_usuarioActionPerformed(evt);
             }
         });
 
         jLabel3.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
-        jLabel3.setText("Edad:");
+        jLabel3.setText("Contrasenia:");
 
         jLabel4.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
-        jLabel4.setText("Telefono:");
+        jLabel4.setText("Confirmar cont:");
 
         jLabel5.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
-        jLabel5.setText("Pasaporte:");
+        jLabel5.setText("Id Empleado:");
 
-        jLabel6.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
-        jLabel6.setText("Correo Electronico");
-
-        jLabel7.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
-        jLabel7.setText("Nacionalidad:");
-
-        txt_Telefono.setToolTipText("");
-        txt_Telefono.addActionListener(new java.awt.event.ActionListener() {
+        txt_confirmarCont.setToolTipText("");
+        txt_confirmarCont.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_TelefonoActionPerformed(evt);
-            }
-        });
-
-        txt_nacionalidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nacionalidadActionPerformed(evt);
+                txt_confirmarContActionPerformed(evt);
             }
         });
 
@@ -184,10 +156,10 @@ public class RegistroClientes extends javax.swing.JFrame {
             }
         });
 
-        txt_correo.setToolTipText("");
-        txt_correo.addActionListener(new java.awt.event.ActionListener() {
+        txt_contrasenia.setToolTipText("");
+        txt_contrasenia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_correoActionPerformed(evt);
+                txt_contraseniaActionPerformed(evt);
             }
         });
 
@@ -201,8 +173,6 @@ public class RegistroClientes extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,16 +180,14 @@ public class RegistroClientes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txt_pasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_idEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btn_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_Telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(txt_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(cmb_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_nacionalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(txt_correo, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
+                                    .addComponent(txt_confirmarCont, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                    .addComponent(txt_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                    .addComponent(txt_contrasenia, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btn_Eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -235,33 +203,27 @@ public class RegistroClientes extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txt_pasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_idEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Agregar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Modificar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(cmb_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_BuscarID))
+                    .addComponent(btn_BuscarID)
+                    .addComponent(txt_contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_confirmarCont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_BuscarN))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(btn_Eliminar)
-                    .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btn_Eliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txt_nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Mostrar))
+                .addComponent(btn_Mostrar)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(101, 101, 101))
@@ -281,51 +243,35 @@ public class RegistroClientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreActionPerformed
+    private void txt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_NombreActionPerformed
+    }//GEN-LAST:event_txt_usuarioActionPerformed
 
-    private void txt_TelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TelefonoActionPerformed
+    private void txt_confirmarContActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_confirmarContActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_TelefonoActionPerformed
-
-    private void txt_nacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nacionalidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nacionalidadActionPerformed
-
-    private void cmb_EdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_EdadActionPerformed
-        // TODO add your handling code here:   
-    }//GEN-LAST:event_cmb_EdadActionPerformed
+    }//GEN-LAST:event_txt_confirmarContActionPerformed
 
     private void btn_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarActionPerformed
         // TODO add your handling code here:
         // Obtener los valores de los campos de texto
-        String pasaporte = txt_pasaporte.getText();
-        String nombre = txt_Nombre.getText();
-        String edadSeleccionada = cmb_Edad.getSelectedItem().toString();
-        int edad = Integer.parseInt(edadSeleccionada);
-        String telefonoTexto = txt_Telefono.getText();
-        int telefono = comporbaciones.Telefono(telefonoTexto);
-        String correo = txt_correo.getText();
-        String nacionalidad = txt_nacionalidad.getText();
+        String idEmpleado = txt_idEmpleado.getText();
+        String user = txt_usuario.getText();
+        String contra = txt_contrasenia.getText();
+        String confirmarContra = txt_confirmarCont.getText();
 
-        txt_pasaporte.setText("");
-        txt_Nombre.setText("");
-        txt_Telefono.setText("");
-        txt_nacionalidad.setText("");
-        txt_correo.setText("");
+        txt_idEmpleado.setText("");
+        txt_usuario.setText("");
+        txt_contrasenia.setText("");
+        txt_confirmarCont.setText("");
 
-        LocalDate fechaActual = LocalDate.now();
-        String fecha = fechaActual.getDayOfMonth() + "/" + fechaActual.getMonthValue() + "/" + fechaActual.getYear();
+        Usuario usuario = new Usuario(user, contra, comporbaciones.devolverEmpleado(this, idEmpleado));
 
-        Cliente cliente = new Cliente(pasaporte, nombre, edad, telefono, correo, nacionalidad);
-
-        if (comporbaciones.existeCliente(this, pasaporte) && telefono > 0) {
-            listaClientes.getListaClientes().add(cliente);
+        if (!comporbaciones.existeUsuario(this, idEmpleado) && contra.equals(confirmarContra) && comporbaciones.existeEmpleado(this, idEmpleado)) {
+            listaUsuarios.getListaUsuarios().add(usuario);
         }
 
         btn_Mostrar.doClick();
-        listaClientes.write();
+        //listaUsuarios.write();
     }//GEN-LAST:event_btn_AgregarActionPerformed
 
     private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
@@ -336,9 +282,9 @@ public class RegistroClientes extends javax.swing.JFrame {
 
     private void btn_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarActionPerformed
         // TODO add your handling code here:
-        for (int i = 0; i < listaClientes.getListaClientes().size(); i++) {
-            if (listaClientes.getListaClientes().get(i).getPasaporte().equals(txt_pasaporte.getText())) {
-                listaClientes.getListaClientes().remove(i);
+        for (int i = 0; i < listaUsuarios.getListaUsuarios().size(); i++) {
+            if (listaUsuarios.getListaUsuarios().get(i).getEmpleado().getId().equals(txt_idEmpleado.getText())) {
+                listaUsuarios.getListaUsuarios().remove(i);
             }
         }
 
@@ -347,22 +293,17 @@ public class RegistroClientes extends javax.swing.JFrame {
     private void btn_MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MostrarActionPerformed
         // TODO add your handling code here:
         modeloTabla = new DefaultTableModel();
-        modeloTabla.addColumn("Pasaporte");
-        modeloTabla.addColumn("Nombre");
-        modeloTabla.addColumn("Edad");
-        modeloTabla.addColumn("Teléfono");
-        modeloTabla.addColumn("Correo");
-        modeloTabla.addColumn("Nacionalidad");
+        modeloTabla.addColumn("Usuario");
+        modeloTabla.addColumn("Contrasenia");
+        modeloTabla.addColumn("Id Empleado");
 
-        for (Cliente cliente : listaClientes.getListaClientes()) {
-            Object[] fila = new Object[6]; // Crea un arreglo para almacenar los datos de cada cliente
+        for (Usuario usuario : listaUsuarios.getListaUsuarios()) {
+            Object[] fila = new Object[3]; // Crea un arreglo para almacenar los datos de cada cliente
 
-            fila[0] = cliente.getPasaporte();
-            fila[1] = cliente.getNombre();
-            fila[2] = cliente.getEdad();
-            fila[3] = cliente.getTelefono();
-            fila[4] = cliente.getCorreo();
-            fila[5] = cliente.getNacionalidad();
+            fila[0] = usuario.getUser();
+            String sens = "************";
+            /*fila[1]*/sens = usuario.getContrasenia();
+            fila[2] = usuario.getEmpleado().getId();
 
             modeloTabla.addRow(fila); // Agrega la fila al modelo de tabla
         }
@@ -375,9 +316,9 @@ public class RegistroClientes extends javax.swing.JFrame {
 
     private void btn_BuscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarIDActionPerformed
         // TODO add your handling code here:
-        for (int i = 0; i < listaClientes.getListaClientes().size(); i++) {
-            if (listaClientes.getListaClientes().get(i).getPasaporte().equals(txt_pasaporte.getText())) {
-                JOptionPane.showMessageDialog(this, listaClientes.getListaClientes().get(i).toString());
+        for (int i = 0; i < listaUsuarios.getListaUsuarios().size(); i++) {
+            if (listaUsuarios.getListaUsuarios().get(i).getEmpleado().getId().equals(txt_idEmpleado.getText())) {
+                JOptionPane.showMessageDialog(this, listaUsuarios.getListaUsuarios().get(i).toString());
                 return;
             }
         }
@@ -386,18 +327,18 @@ public class RegistroClientes extends javax.swing.JFrame {
 
     private void btn_BuscarNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarNActionPerformed
         // TODO add your handling code here:
-        for (int i = 0; i < listaClientes.getListaClientes().size(); i++) {
-            if (listaClientes.getListaClientes().get(i).getNombre().equals(txt_Nombre.getText())) {
-                JOptionPane.showMessageDialog(this, listaClientes.getListaClientes().get(i).toString());
+        for (int i = 0; i < listaUsuarios.getListaUsuarios().size(); i++) {
+            if (listaUsuarios.getListaUsuarios().get(i).getUser().equals(txt_usuario.getText())) {
+                JOptionPane.showMessageDialog(this, listaUsuarios.getListaUsuarios().get(i).toString());
                 return;
             }
         }
         JOptionPane.showMessageDialog(this, "No se encontró el nombre");
     }//GEN-LAST:event_btn_BuscarNActionPerformed
 
-    private void txt_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_correoActionPerformed
+    private void txt_contraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contraseniaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_correoActionPerformed
+    }//GEN-LAST:event_txt_contraseniaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -416,14 +357,18 @@ public class RegistroClientes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -432,7 +377,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroClientes().setVisible(true);
+                new RegistroUsuarios().setVisible(true);
             }
         });
     }
@@ -444,20 +389,16 @@ public class RegistroClientes extends javax.swing.JFrame {
     private javax.swing.JButton btn_Eliminar;
     private javax.swing.JButton btn_Modificar;
     private javax.swing.JButton btn_Mostrar;
-    private javax.swing.JComboBox<String> cmb_Edad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbl_Clientes;
-    private javax.swing.JTextField txt_Nombre;
-    private javax.swing.JTextField txt_Telefono;
-    private javax.swing.JTextField txt_correo;
-    private javax.swing.JTextField txt_nacionalidad;
-    private javax.swing.JTextField txt_pasaporte;
+    private javax.swing.JTextField txt_confirmarCont;
+    private javax.swing.JTextField txt_contrasenia;
+    private javax.swing.JTextField txt_idEmpleado;
+    private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables
 }

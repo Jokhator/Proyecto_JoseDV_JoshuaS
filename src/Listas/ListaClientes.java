@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package Listas;
 
-package Registros;
-
+import SampleClasses.Cliente;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -12,9 +12,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
- * @author Jose Daniel Vargas C
+ * @author jdvc, jgsm
  * @time 2:17:16 PM
  * @date Jun 23, 2023
  */
@@ -35,7 +36,7 @@ public class ListaClientes {
         return instancia;
     }
 
-    public ArrayList<Cliente > getListaClientes() {
+    public ArrayList<Cliente> getListaClientes() {
         return listaClientes;
     }
 
@@ -75,5 +76,23 @@ public class ListaClientes {
             System.err.println("Error al guardar los clientes en el archivo " + nombreArchivo + ": " + e.getMessage());
         }
     }
-
+    
+    public boolean existeCliente(javax.swing.JFrame form, String pasaporte) {
+        if (ListaClientes.getInstancia().getListaClientes().isEmpty()) {
+            return false;
+        } else {
+            int cont = 0;
+            for (int i = 0; i < ListaClientes.getInstancia().getListaClientes().size(); i++) {
+                if (!ListaClientes.getInstancia().getListaClientes().get(i).getPasaporte().equals(pasaporte)) {
+                    cont++;
+                }
+            }
+            if (cont == ListaClientes.getInstancia().getListaClientes().size()) {
+                return false;
+            } else {
+                JOptionPane.showMessageDialog(form, "Cliente encontrado.");
+                return true;
+            }
+        }
+    }
 }

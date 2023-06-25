@@ -2,18 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
-package Registros;
+package SampleClasses;
 
 /**
- * @author Jose Daniel Vargas C
+ * @author jdvc, jgsm
  * @time 2:17:06 PM
  * @date Jun 23, 2023
  */
 public class Cliente {
-    String pasaporte, nombre;
-    int telefono, edad;
-    String correo, nacionalidad;
+
+    private String pasaporte, nombre, correo, nacionalidad;
+    private int telefono, edad;
 
     public Cliente() {
     }
@@ -79,10 +78,9 @@ public class Cliente {
     public String toString() {
         return "Cliente{" + "pasaporte=" + pasaporte + ", nombre=" + nombre + ", telefono=" + telefono + ", edad=" + edad + ", correo=" + correo + ", nacionalidad=" + nacionalidad + '}';
     }
-    
+
     public String save() {
         return pasaporte + "|" + nombre + "|" + telefono + "|" + edad + "|" + correo + "|" + nacionalidad;
     }
-    
-    
+
 }

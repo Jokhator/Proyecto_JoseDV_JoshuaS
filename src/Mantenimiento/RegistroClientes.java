@@ -2,31 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Registros;
+package Mantenimiento;
 
-import java.awt.event.WindowEvent;
+import SampleClasses.Cliente;
+import Listas.ListaClientes;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
-import Seguridad.Comporbaciones;
+import Seguridad.Comprobaciones;
 
 /**
  *
- * @author jdvcb
+ * @author jdvc, jgsm
  */
-public class AgregarClientes extends javax.swing.JFrame {
+public class RegistroClientes extends javax.swing.JFrame {
 
     /**
      * Creates new form AgregarEmpleados
      */
     ListaClientes listaClientes = ListaClientes.getInstancia();
     DefaultTableModel modeloTabla;
-    Comporbaciones comporbaciones = new Comporbaciones();
+    Comprobaciones comporbaciones = new Comprobaciones();
 
-    public AgregarClientes() {
+    public RegistroClientes() {
         initComponents();
         cmbEdad();
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -321,7 +320,7 @@ public class AgregarClientes extends javax.swing.JFrame {
 
         Cliente cliente = new Cliente(pasaporte, nombre, edad, telefono, correo, nacionalidad);
 
-        if (!comporbaciones.existeCliente(this, pasaporte) && telefono > 0) {
+        if (listaClientes.existeCliente(this, pasaporte) && telefono > 0) {
             listaClientes.getListaClientes().add(cliente);
         }
 
@@ -417,21 +416,23 @@ public class AgregarClientes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarClientes().setVisible(true);
+                new RegistroClientes().setVisible(true);
             }
         });
     }

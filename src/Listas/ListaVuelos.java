@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package Registros;
+package Listas;
 
+import SampleClasses.Empleado;
+import SampleClasses.Vuelo;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -12,10 +14,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import Seguridad.Comporbaciones;
+import Seguridad.Comprobaciones;
 
 /**
- * @author Jose Daniel Vargas C
+ * @author jdvc, jgsm
  * @time 9:12:05 AM
  * @date Jun 23, 2023
  */
@@ -23,7 +25,7 @@ public class ListaVuelos {
 
     private static ListaVuelos instancia;
     private ArrayList<Vuelo> listaVuelos;
-    Comporbaciones comp = new Comporbaciones();
+    Comprobaciones comp = new Comprobaciones();
 
     private ListaVuelos() {
         listaVuelos = new ArrayList<>();

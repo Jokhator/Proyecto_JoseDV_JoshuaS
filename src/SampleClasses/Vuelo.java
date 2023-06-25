@@ -2,30 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package SampleClasses;
 
-package Registros;
+import SampleClasses.Empleado;
 
 /**
- * @author Jose Daniel Vargas C
+ * @author jdvc, jgsm
  * @time 9:30:51 PM
  * @date Jun 22, 2023
  */
 public class Vuelo {
-    String idVuelo;
-    Empleado piloto;
-    Empleado copiloto;
-    String origen;
-    String destino;
-    String codAreopuertoSalida;
-    String codAeropuertoEntrada;
-    String fechaSalida;
-    String fechaEntrada;
-    String horaSalida;
-    String horaEntrada;
-    String idAvion;
-    int capacidad;
-    double costoPasaje;
-    double costoTotalAerolinea;
+
+    private String idVuelo, origen, destino, codAreopuertoSalida, codAeropuertoEntrada,
+            fechaSalida, fechaEntrada, horaSalida, horaEntrada, idAvion;
+    private Empleado piloto, copiloto;
+    private int capacidad;
+    private double costoPasaje, costoTotalAerolinea;
 
     public Vuelo() {
     }
@@ -172,9 +164,9 @@ public class Vuelo {
     public String toString() {
         return "Vuelo{" + "idVuelo=" + idVuelo + ", piloto=" + piloto.getId() + ", copiloto=" + copiloto.getId() + ", origen=" + origen + ", destino=" + destino + ", codAreopuertoSalida=" + codAreopuertoSalida + ", codAeropuertoEntrada=" + codAeropuertoEntrada + ", fechaSalida=" + fechaSalida + ", fechaEntrada=" + fechaEntrada + ", horaSalida=" + horaSalida + ", horaEntrada=" + horaEntrada + ", idAvion=" + idAvion + ", capacidad=" + capacidad + ", costoPasaje=" + costoPasaje + ", costoTotalAerolinea=" + costoTotalAerolinea + '}';
     }
-    
+
     public String save() {
-        return idVuelo + "|" + piloto.getId() + "|" + copiloto.getId() + "|" + origen + "|" + destino + "|" + codAreopuertoSalida + "|" + codAeropuertoEntrada + "|" + fechaSalida 
+        return idVuelo + "|" + piloto.getId() + "|" + copiloto.getId() + "|" + origen + "|" + destino + "|" + codAreopuertoSalida + "|" + codAeropuertoEntrada + "|" + fechaSalida
                 + "|" + fechaEntrada + "|" + horaSalida + "|" + horaEntrada + "|" + idAvion + "|" + capacidad + "|" + costoPasaje + "|" + costoTotalAerolinea;
     }
 }

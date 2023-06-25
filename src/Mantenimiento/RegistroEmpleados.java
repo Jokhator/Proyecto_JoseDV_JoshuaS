@@ -2,31 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Registros;
+package Mantenimiento;
 
-import java.awt.event.WindowEvent;
+import SampleClasses.Empleado;
+import Listas.ListaEmpleados;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
-import Seguridad.Comporbaciones;
+import Seguridad.Comprobaciones;
 
 /**
  *
- * @author jdvcb
+ * @author jdvc, jgsm
  */
-public class AgregarEmpleados extends javax.swing.JFrame {
+public class RegistroEmpleados extends javax.swing.JFrame {
 
     /**
-     * Creates new form AgregarEmpleados
+     * Creates new form RegistroEmpleados
      */
     ListaEmpleados listaEmps = ListaEmpleados.getInstancia();
     DefaultTableModel modeloTabla;
-    Comporbaciones comporbaciones = new Comporbaciones();
+    Comprobaciones comporbaciones = new Comprobaciones();
 
-    public AgregarEmpleados() {
+    public RegistroEmpleados() {
         initComponents();
         cmbEdad();
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -417,20 +416,21 @@ public class AgregarEmpleados extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarEmpleados().setVisible(true);
+                new RegistroEmpleados().setVisible(true);
             }
         });
     }

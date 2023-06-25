@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Joshu
+ * @author jdvc, jgsm
  */
 public class CompraVuelo extends javax.swing.JFrame {
     ListaClientes lista = ListaClientes.getInstancia();

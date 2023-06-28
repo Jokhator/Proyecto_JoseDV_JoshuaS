@@ -65,7 +65,7 @@ public class RegistroEmpleados extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txt_id = new javax.swing.JTextField();
+        txt_Id = new javax.swing.JTextField();
         txt_Nombre = new javax.swing.JTextField();
         cmb_Edad = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -85,10 +85,16 @@ public class RegistroEmpleados extends javax.swing.JFrame {
         btn_Mostrar = new javax.swing.JButton();
         cmb_Depatarmentos = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
         jLabel1.setText("Nombre:");
+
+        txt_Id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_IdActionPerformed(evt);
+            }
+        });
 
         txt_Nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,7 +190,7 @@ public class RegistroEmpleados extends javax.swing.JFrame {
             }
         });
 
-        cmb_Depatarmentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Piloto", "Tripulante", "Manager", "Seguridad", "Boleteria" }));
+        cmb_Depatarmentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrativo", "Mostrador" }));
         cmb_Depatarmentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_DepatarmentosActionPerformed(evt);
@@ -209,24 +215,22 @@ public class RegistroEmpleados extends javax.swing.JFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_Telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(txt_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(cmb_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_Salario, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(cmb_Depatarmentos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btn_Eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_BuscarN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_BuscarID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_Mostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txt_Telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(txt_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(cmb_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_Salario, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(cmb_Depatarmentos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txt_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btn_Eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_BuscarN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_BuscarID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_Mostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -235,7 +239,7 @@ public class RegistroEmpleados extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Agregar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -300,20 +304,18 @@ public class RegistroEmpleados extends javax.swing.JFrame {
     private void btn_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarActionPerformed
         // TODO add your handling code here:
         // Obtener los valores de los campos de texto
-        String id = txt_id.getText();
+        String id = txt_Id.getText();
         String nom = txt_Nombre.getText();
         String edadSeleccionada = cmb_Edad.getSelectedItem().toString();
         int edad = Integer.parseInt(edadSeleccionada);
         String telefonoTexto = txt_Telefono.getText();
         String departamento = String.valueOf(cmb_Depatarmentos.getSelectedItem());
         String salarioTexto = txt_Salario.getText();
-
-        // Verificar que el campo de teléfono solo contenga números
-        int telefono = comporbaciones.Telefono(telefonoTexto);
+        int telefono = Integer.parseInt(txt_Telefono.getText());
 
         // Verificar que el campo de salario solo contenga números
         double salario = comporbaciones.esDouble(salarioTexto);
-        txt_id.setText("");
+        txt_Id.setText("");
         txt_Nombre.setText("");
         txt_Telefono.setText("");
         txt_Salario.setText("");
@@ -327,19 +329,33 @@ public class RegistroEmpleados extends javax.swing.JFrame {
             listaEmps.getListaEmpleados().add(empleado);
         }
         btn_Mostrar.doClick();
+        txt_Id.setText("");
+        txt_Nombre.setText("");
+        txt_Telefono.setText("");
+        txt_Salario.setText("");
+
     }//GEN-LAST:event_btn_AgregarActionPerformed
 
     private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
         // TODO add your handling code here:
         btn_Eliminar.doClick();
         btn_Agregar.doClick();
+        txt_Id.setText("");
+        txt_Nombre.setText("");
+        txt_Telefono.setText("");
+        txt_Salario.setText("");
     }//GEN-LAST:event_btn_ModificarActionPerformed
 
     private void btn_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < listaEmps.getListaEmpleados().size(); i++) {
-            if (listaEmps.getListaEmpleados().get(i).getId().equals(txt_id.getText())) {
+            if (listaEmps.getListaEmpleados().get(i).getId().equals(txt_Id.getText())) {
                 listaEmps.getListaEmpleados().remove(i);
+                btn_MostrarActionPerformed(evt);
+                txt_Id.setText("");
+                txt_Nombre.setText("");
+                txt_Telefono.setText("");
+                txt_Salario.setText("");
             }
         }
 
@@ -380,12 +396,14 @@ public class RegistroEmpleados extends javax.swing.JFrame {
     private void btn_BuscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarIDActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < listaEmps.getListaEmpleados().size(); i++) {
-            if (listaEmps.getListaEmpleados().get(i).getId().equals(txt_id.getText())) {
+            if (listaEmps.getListaEmpleados().get(i).getId().equals(txt_Id.getText())) {
                 JOptionPane.showMessageDialog(this, listaEmps.getListaEmpleados().get(i).toString());
+                txt_Id.setText("");
                 return;
             }
         }
         JOptionPane.showMessageDialog(this, "No se encontró la ID");
+        txt_Id.setText("");
     }//GEN-LAST:event_btn_BuscarIDActionPerformed
 
     private void btn_BuscarNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarNActionPerformed
@@ -393,11 +411,17 @@ public class RegistroEmpleados extends javax.swing.JFrame {
         for (int i = 0; i < listaEmps.getListaEmpleados().size(); i++) {
             if (listaEmps.getListaEmpleados().get(i).getNom().equals(txt_Nombre.getText())) {
                 JOptionPane.showMessageDialog(this, listaEmps.getListaEmpleados().get(i).toString());
+                txt_Nombre.setText("");
                 return;
             }
         }
         JOptionPane.showMessageDialog(this, "No se encontró el nombre");
+        txt_Nombre.setText("");
     }//GEN-LAST:event_btn_BuscarNActionPerformed
+
+    private void txt_IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_IdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -453,9 +477,9 @@ public class RegistroEmpleados extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbl_Empleados;
+    private javax.swing.JTextField txt_Id;
     private javax.swing.JTextField txt_Nombre;
     private javax.swing.JTextField txt_Salario;
     private javax.swing.JTextField txt_Telefono;
-    private javax.swing.JTextField txt_id;
     // End of variables declaration//GEN-END:variables
 }

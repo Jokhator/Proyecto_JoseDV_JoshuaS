@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -53,27 +53,24 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txt_id" min="-2" pref="210" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btn_Agregar" min="-2" pref="112" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txt_Telefono" alignment="0" pref="210" max="32767" attributes="0"/>
+                                  <Component id="txt_Nombre" alignment="0" pref="210" max="32767" attributes="0"/>
+                                  <Component id="cmb_Edad" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
+                                  <Component id="txt_Salario" alignment="0" pref="210" max="32767" attributes="0"/>
+                                  <Component id="cmb_Depatarmentos" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txt_Telefono" alignment="0" pref="210" max="32767" attributes="0"/>
-                                      <Component id="txt_Nombre" alignment="0" pref="210" max="32767" attributes="0"/>
-                                      <Component id="cmb_Edad" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
-                                      <Component id="txt_Salario" alignment="0" pref="210" max="32767" attributes="0"/>
-                                      <Component id="cmb_Depatarmentos" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btn_Eliminar" max="32767" attributes="0"/>
-                                      <Component id="btn_Modificar" max="32767" attributes="0"/>
-                                      <Component id="btn_BuscarN" max="32767" attributes="0"/>
-                                      <Component id="btn_BuscarID" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="btn_Mostrar" max="32767" attributes="0"/>
-                                  </Group>
+                              <Component id="txt_Id" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="207" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btn_Agregar" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btn_Eliminar" max="32767" attributes="0"/>
+                                  <Component id="btn_Modificar" max="32767" attributes="0"/>
+                                  <Component id="btn_BuscarN" max="32767" attributes="0"/>
+                                  <Component id="btn_BuscarID" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="btn_Mostrar" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -88,7 +85,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_id" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_Id" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_Agregar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -137,7 +134,10 @@
             <Property name="text" type="java.lang.String" value="Nombre:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_id">
+        <Component class="javax.swing.JTextField" name="txt_Id">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_IdActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_Nombre">
           <Events>
@@ -285,12 +285,9 @@
         <Component class="javax.swing.JComboBox" name="cmb_Depatarmentos">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="Piloto"/>
-                <StringItem index="1" value="Tripulante"/>
-                <StringItem index="2" value="Manager"/>
-                <StringItem index="3" value="Seguridad"/>
-                <StringItem index="4" value="Boleteria"/>
+              <StringArray count="2">
+                <StringItem index="0" value="Administrativo"/>
+                <StringItem index="1" value="Mostrador"/>
               </StringArray>
             </Property>
           </Properties>

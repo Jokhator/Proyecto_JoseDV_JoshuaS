@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -80,15 +80,13 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="btn_Eliminar" min="-2" pref="112" max="-2" attributes="0"/>
-                                              <Component id="btn_Modificar" min="-2" pref="112" max="-2" attributes="0"/>
-                                              <Component id="btn_BuscarN" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btn_BuscarID" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
-                                              <Component id="btn_Mostrar" min="-2" pref="112" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="btn_Agregar" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="btn_BuscarN" max="32767" attributes="0"/>
+                                          <Component id="btn_Agregar" max="32767" attributes="0"/>
+                                          <Component id="btn_BuscarID" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="btn_Mostrar" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btn_Eliminar" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btn_Modificar" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>

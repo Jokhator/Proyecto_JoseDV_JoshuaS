@@ -7,12 +7,14 @@ package Compra;
 import Listas.ListaClientes;
 import javax.swing.JOptionPane;
 import Seguridad.Comprobaciones;
+import javax.swing.WindowConstants;
 
 /**
  *
  * @author jdvc, jgsm
  */
 public class CompraVuelo extends javax.swing.JFrame {
+
     ListaClientes listaClientes = ListaClientes.getInstancia();
     Comprobaciones comprobaciones = new Comprobaciones();
 
@@ -21,6 +23,21 @@ public class CompraVuelo extends javax.swing.JFrame {
      */
     public CompraVuelo() {
         initComponents();
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                confirmarCierreVentana();
+            }
+        });
+    }
+
+    private void confirmarCierreVentana() {
+        // Aquí puedes mostrar un mensaje de confirmación y realizar acciones adicionales antes de cerrar la ventana
+        int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas cerrar la ventana?", "Confirmar cierre", javax.swing.JOptionPane.YES_NO_OPTION);
+        if (opcion == javax.swing.JOptionPane.YES_OPTION) {
+            dispose(); // Cerrar la ventana
+        }
     }
 
     /**
@@ -48,7 +65,7 @@ public class CompraVuelo extends javax.swing.JFrame {
 
         jLabel4.setText("Pais destino:");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         txt_Pasaporte.setToolTipText("");
         txt_Pasaporte.addActionListener(new java.awt.event.ActionListener() {
@@ -197,7 +214,7 @@ public class CompraVuelo extends javax.swing.JFrame {
 
     private void btn_MostrarVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MostrarVuelosActionPerformed
         if (comprobaciones.existeCliente(this, txt_Pasaporte.getText())) {
-            
+
         } else {
             JOptionPane.showMessageDialog(this, "El pasaporte digitado no coincide con ningun cliente registrado en el sistema.\n"
                     + "Favor Digitar un pasaporte valido para proceder con la busqueda de vuelos disponibles.");

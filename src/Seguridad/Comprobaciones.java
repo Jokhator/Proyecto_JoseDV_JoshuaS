@@ -12,22 +12,11 @@ import Listas.ListaUsuarios;
 import SampleClasses.Usuario;
 
 /**
- * @author Jose Daniel Vargas C
+ * @author jdvc, jgsm
  * @time 10:41:00 AM
  * @date Jun 23, 2023
  */
 public class Comprobaciones {
-
-    public int Telefono(String text) {
-        if (!text.matches("\\d+") || text.length() != 8) {
-            // No contiene solo números, mostrar un mensaje de error o realizar alguna acción apropiada
-            // Aquí puedes mostrar un mensaje de error en una etiqueta o lanzar una excepción, por ejemplo
-            JOptionPane.showMessageDialog(null, "El campo de teléfono debe contener solo 8 números.");
-            return -1; // Salir del método o realizar alguna acción adicional según sea necesario
-        } else {
-            return Integer.parseInt(text);
-        }
-    }
 
     public double esDouble(String text) {
         if (!text.matches("\\d+(\\.\\d+)?")) {
@@ -102,7 +91,7 @@ public class Comprobaciones {
             }
         }
     }
-    
+
     public boolean existeUsuario(javax.swing.JFrame form, String username) {
         if (ListaUsuarios.getInstancia().getListaUsuarios().isEmpty()) {
             return false;

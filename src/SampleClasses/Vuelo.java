@@ -4,8 +4,6 @@
  */
 package SampleClasses;
 
-import SampleClasses.Empleado;
-
 /**
  * @author jdvc, jgsm
  * @time 9:30:51 PM

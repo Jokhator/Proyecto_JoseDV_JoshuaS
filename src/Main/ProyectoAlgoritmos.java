@@ -4,17 +4,17 @@
  */
 package Main;
 
+import Seguridad.InicioSesion;
+
 /**
  *
- * @author jdvcb
+ * @author jdvc, jgsm
  */
 public class ProyectoAlgoritmos {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        InicioSesion inicioSesion = new InicioSesion();
+        inicioSesion.setVisible(true);
     }
-    
+
 }

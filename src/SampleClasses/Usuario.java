@@ -6,14 +6,13 @@
 package SampleClasses;
 
 /**
- * @author Jose Daniel Vargas C
+ * @author jdvc, jgsm
  * @time 11:33:16 PM
  * @date Jun 24, 2023
  */
 public class Usuario {
-    String user;
-    String contrasenia;
-    Empleado empleado;
+    private String user, contrasenia;
+    private Empleado empleado;
 
     public Usuario() {
     }

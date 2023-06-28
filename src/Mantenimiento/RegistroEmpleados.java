@@ -37,6 +37,13 @@ public class RegistroEmpleados extends javax.swing.JFrame {
         });
     }
 
+    public void limpiarTxt() {
+        txt_Id.setText("");
+        txt_Nombre.setText("");
+        txt_Telefono.setText("");
+        txt_Salario.setText("");
+    }
+
     public void cmbEdad() {
         for (int i = 20; i <= 120; i++) {
             String num = String.valueOf(i);
@@ -315,10 +322,6 @@ public class RegistroEmpleados extends javax.swing.JFrame {
 
         // Verificar que el campo de salario solo contenga números
         double salario = comporbaciones.esDouble(salarioTexto);
-        txt_Id.setText("");
-        txt_Nombre.setText("");
-        txt_Telefono.setText("");
-        txt_Salario.setText("");
         // Obtener la fecha actual
         LocalDate fechaActual = LocalDate.now();
         String fecha = fechaActual.getDayOfMonth() + "/" + fechaActual.getMonthValue() + "/" + fechaActual.getYear();
@@ -329,10 +332,7 @@ public class RegistroEmpleados extends javax.swing.JFrame {
             listaEmps.getListaEmpleados().add(empleado);
         }
         btn_Mostrar.doClick();
-        txt_Id.setText("");
-        txt_Nombre.setText("");
-        txt_Telefono.setText("");
-        txt_Salario.setText("");
+        limpiarTxt();
 
     }//GEN-LAST:event_btn_AgregarActionPerformed
 
@@ -340,10 +340,7 @@ public class RegistroEmpleados extends javax.swing.JFrame {
         // TODO add your handling code here:
         btn_Eliminar.doClick();
         btn_Agregar.doClick();
-        txt_Id.setText("");
-        txt_Nombre.setText("");
-        txt_Telefono.setText("");
-        txt_Salario.setText("");
+        limpiarTxt();
     }//GEN-LAST:event_btn_ModificarActionPerformed
 
     private void btn_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarActionPerformed
@@ -352,10 +349,7 @@ public class RegistroEmpleados extends javax.swing.JFrame {
             if (listaEmps.getListaEmpleados().get(i).getId().equals(txt_Id.getText())) {
                 listaEmps.getListaEmpleados().remove(i);
                 btn_MostrarActionPerformed(evt);
-                txt_Id.setText("");
-                txt_Nombre.setText("");
-                txt_Telefono.setText("");
-                txt_Salario.setText("");
+                limpiarTxt();
             }
         }
 
@@ -398,12 +392,12 @@ public class RegistroEmpleados extends javax.swing.JFrame {
         for (int i = 0; i < listaEmps.getListaEmpleados().size(); i++) {
             if (listaEmps.getListaEmpleados().get(i).getId().equals(txt_Id.getText())) {
                 JOptionPane.showMessageDialog(this, listaEmps.getListaEmpleados().get(i).toString());
-                txt_Id.setText("");
+                limpiarTxt();
                 return;
             }
         }
         JOptionPane.showMessageDialog(this, "No se encontró la ID");
-        txt_Id.setText("");
+        limpiarTxt();
     }//GEN-LAST:event_btn_BuscarIDActionPerformed
 
     private void btn_BuscarNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarNActionPerformed
@@ -411,12 +405,12 @@ public class RegistroEmpleados extends javax.swing.JFrame {
         for (int i = 0; i < listaEmps.getListaEmpleados().size(); i++) {
             if (listaEmps.getListaEmpleados().get(i).getNom().equals(txt_Nombre.getText())) {
                 JOptionPane.showMessageDialog(this, listaEmps.getListaEmpleados().get(i).toString());
-                txt_Nombre.setText("");
+                limpiarTxt();
                 return;
             }
         }
         JOptionPane.showMessageDialog(this, "No se encontró el nombre");
-        txt_Nombre.setText("");
+        limpiarTxt();
     }//GEN-LAST:event_btn_BuscarNActionPerformed
 
     private void txt_IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdActionPerformed

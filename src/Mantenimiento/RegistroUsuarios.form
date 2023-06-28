@@ -52,11 +52,11 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txt_confirmarCont" alignment="0" pref="210" max="32767" attributes="0"/>
-                                  <Component id="txt_usuario" alignment="0" pref="210" max="32767" attributes="0"/>
-                                  <Component id="txt_contrasenia" alignment="0" pref="210" max="32767" attributes="0"/>
+                                  <Component id="txt_ConfirmarCont" alignment="0" pref="210" max="32767" attributes="0"/>
+                                  <Component id="txt_Usuario" alignment="0" pref="210" max="32767" attributes="0"/>
+                                  <Component id="txt_Contrasenia" alignment="0" pref="210" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="txt_idEmpleado" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                              <Component id="txt_IdEmpleado" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="207" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -79,25 +79,25 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_idEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_IdEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_Agregar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="txt_usuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_Usuario" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_Modificar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_BuscarID" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_contrasenia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_Contrasenia" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_confirmarCont" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_ConfirmarCont" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_BuscarN" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -120,11 +120,14 @@
             <Property name="text" type="java.lang.String" value="Usuario:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_idEmpleado">
-        </Component>
-        <Component class="javax.swing.JTextField" name="txt_usuario">
+        <Component class="javax.swing.JTextField" name="txt_IdEmpleado">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_usuarioActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_IdEmpleadoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_Usuario">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_UsuarioActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -151,12 +154,12 @@
             <Property name="text" type="java.lang.String" value="Id Empleado:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_confirmarCont">
+        <Component class="javax.swing.JTextField" name="txt_ConfirmarCont">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_confirmarContActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_ConfirmarContActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -231,12 +234,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_MostrarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_contrasenia">
+        <Component class="javax.swing.JTextField" name="txt_Contrasenia">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_contraseniaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_ContraseniaActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

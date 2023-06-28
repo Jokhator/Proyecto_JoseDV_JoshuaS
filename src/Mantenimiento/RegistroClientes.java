@@ -45,6 +45,14 @@ public class RegistroClientes extends javax.swing.JFrame {
         }
     }
 
+    public void limpiarTxt() {
+        txt_Pasaporte.setText("");
+        txt_Nombre.setText("");
+        txt_Telefono.setText("");
+        txt_Nacionalidad.setText("");
+        txt_Correo.setText("");
+    }
+
     private void confirmarCierreVentana() {
         // Aquí puedes mostrar un mensaje de confirmación y realizar acciones adicionales antes de cerrar la ventana
         int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas cerrar la ventana?", "Confirmar cierre", javax.swing.JOptionPane.YES_NO_OPTION);
@@ -65,7 +73,7 @@ public class RegistroClientes extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txt_pasaporte = new javax.swing.JTextField();
+        txt_Pasaporte = new javax.swing.JTextField();
         txt_Nombre = new javax.swing.JTextField();
         cmb_Edad = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -74,7 +82,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txt_Telefono = new javax.swing.JTextField();
-        txt_nacionalidad = new javax.swing.JTextField();
+        txt_Nacionalidad = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_Clientes = new javax.swing.JTable();
         btn_Agregar = new javax.swing.JButton();
@@ -83,12 +91,18 @@ public class RegistroClientes extends javax.swing.JFrame {
         btn_BuscarN = new javax.swing.JButton();
         btn_Eliminar = new javax.swing.JButton();
         btn_Mostrar = new javax.swing.JButton();
-        txt_correo = new javax.swing.JTextField();
+        txt_Correo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
         jLabel1.setText("Nombre:");
+
+        txt_Pasaporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_PasaporteActionPerformed(evt);
+            }
+        });
 
         txt_Nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,9 +138,9 @@ public class RegistroClientes extends javax.swing.JFrame {
             }
         });
 
-        txt_nacionalidad.addActionListener(new java.awt.event.ActionListener() {
+        txt_Nacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nacionalidadActionPerformed(evt);
+                txt_NacionalidadActionPerformed(evt);
             }
         });
 
@@ -184,10 +198,10 @@ public class RegistroClientes extends javax.swing.JFrame {
             }
         });
 
-        txt_correo.setToolTipText("");
-        txt_correo.addActionListener(new java.awt.event.ActionListener() {
+        txt_Correo.setToolTipText("");
+        txt_Correo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_correoActionPerformed(evt);
+                txt_CorreoActionPerformed(evt);
             }
         });
 
@@ -213,18 +227,17 @@ public class RegistroClientes extends javax.swing.JFrame {
                                 .addComponent(txt_Telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                                 .addComponent(txt_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                                 .addComponent(cmb_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txt_nacionalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                .addComponent(txt_correo, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
-                            .addComponent(txt_pasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_Nacionalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(txt_Correo, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
+                            .addComponent(txt_Pasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btn_Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btn_Eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_BuscarN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_BuscarID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_Mostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(btn_Eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_BuscarN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_BuscarID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_Mostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -233,7 +246,7 @@ public class RegistroClientes extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txt_pasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Pasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Agregar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -254,11 +267,11 @@ public class RegistroClientes extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(btn_Eliminar)
-                    .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txt_nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Mostrar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -287,9 +300,9 @@ public class RegistroClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_TelefonoActionPerformed
 
-    private void txt_nacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nacionalidadActionPerformed
+    private void txt_NacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NacionalidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nacionalidadActionPerformed
+    }//GEN-LAST:event_txt_NacionalidadActionPerformed
 
     private void cmb_EdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_EdadActionPerformed
         // TODO add your handling code here:   
@@ -298,19 +311,13 @@ public class RegistroClientes extends javax.swing.JFrame {
     private void btn_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarActionPerformed
         // TODO add your handling code here:
         // Obtener los valores de los campos de texto
-        String pasaporte = txt_pasaporte.getText();
+        String pasaporte = txt_Pasaporte.getText();
         String nombre = txt_Nombre.getText();
         String edadSeleccionada = cmb_Edad.getSelectedItem().toString();
         int edad = Integer.parseInt(edadSeleccionada);
         int telefono = Integer.parseInt(txt_Telefono.getText());
-        String correo = txt_correo.getText();
-        String nacionalidad = txt_nacionalidad.getText();
-
-        txt_pasaporte.setText("");
-        txt_Nombre.setText("");
-        txt_Telefono.setText("");
-        txt_nacionalidad.setText("");
-        txt_correo.setText("");
+        String correo = txt_Correo.getText();
+        String nacionalidad = txt_Nacionalidad.getText();
 
         LocalDate fechaActual = LocalDate.now();
         String fecha = fechaActual.getDayOfMonth() + "/" + fechaActual.getMonthValue() + "/" + fechaActual.getYear();
@@ -322,6 +329,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         }
 
         btn_Mostrar.doClick();
+        limpiarTxt();
         listaClientes.write();
     }//GEN-LAST:event_btn_AgregarActionPerformed
 
@@ -329,13 +337,16 @@ public class RegistroClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
         btn_Eliminar.doClick();
         btn_Agregar.doClick();
+        limpiarTxt();
     }//GEN-LAST:event_btn_ModificarActionPerformed
 
     private void btn_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < listaClientes.getListaClientes().size(); i++) {
-            if (listaClientes.getListaClientes().get(i).getPasaporte().equals(txt_pasaporte.getText())) {
+            if (listaClientes.getListaClientes().get(i).getPasaporte().equals(txt_Pasaporte.getText())) {
                 listaClientes.getListaClientes().remove(i);
+                txt_Pasaporte.setText("");
+                limpiarTxt();
             }
         }
 
@@ -373,12 +384,14 @@ public class RegistroClientes extends javax.swing.JFrame {
     private void btn_BuscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarIDActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < listaClientes.getListaClientes().size(); i++) {
-            if (listaClientes.getListaClientes().get(i).getPasaporte().equals(txt_pasaporte.getText())) {
+            if (listaClientes.getListaClientes().get(i).getPasaporte().equals(txt_Pasaporte.getText())) {
                 JOptionPane.showMessageDialog(this, listaClientes.getListaClientes().get(i).toString());
+                limpiarTxt();
                 return;
             }
         }
         JOptionPane.showMessageDialog(this, "No se encontró la ID");
+        limpiarTxt();
     }//GEN-LAST:event_btn_BuscarIDActionPerformed
 
     private void btn_BuscarNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarNActionPerformed
@@ -386,15 +399,21 @@ public class RegistroClientes extends javax.swing.JFrame {
         for (int i = 0; i < listaClientes.getListaClientes().size(); i++) {
             if (listaClientes.getListaClientes().get(i).getNombre().equals(txt_Nombre.getText())) {
                 JOptionPane.showMessageDialog(this, listaClientes.getListaClientes().get(i).toString());
+                limpiarTxt();
                 return;
             }
         }
         JOptionPane.showMessageDialog(this, "No se encontró el nombre");
+        limpiarTxt();
     }//GEN-LAST:event_btn_BuscarNActionPerformed
 
-    private void txt_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_correoActionPerformed
+    private void txt_CorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_CorreoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_correoActionPerformed
+    }//GEN-LAST:event_txt_CorreoActionPerformed
+
+    private void txt_PasaporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_PasaporteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_PasaporteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -451,10 +470,10 @@ public class RegistroClientes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbl_Clientes;
+    private javax.swing.JTextField txt_Correo;
+    private javax.swing.JTextField txt_Nacionalidad;
     private javax.swing.JTextField txt_Nombre;
+    private javax.swing.JTextField txt_Pasaporte;
     private javax.swing.JTextField txt_Telefono;
-    private javax.swing.JTextField txt_correo;
-    private javax.swing.JTextField txt_nacionalidad;
-    private javax.swing.JTextField txt_pasaporte;
     // End of variables declaration//GEN-END:variables
 }

@@ -40,6 +40,20 @@ public class RegistroVuelos extends javax.swing.JFrame {
         });
     }
 
+    public void limpiarTxt() {
+        txt_idPiloto.setText("");
+        txt_idVuelo.setText("");
+        txt_idCopiloto.setText("");
+        txt_origen.setText("");
+        txt_destino.setText("");
+        txt_aeropuertoSalida.setText("");
+        txt_aeropuertoEntrada.setText("");
+        txt_idAvion.setText("");
+        txt_capacidad.setText("");
+        txt_costoBoleto.setText("");
+        txt_costoTotal.setText("");
+    }
+
     private void confirmarCierreVentana() {
         // Aquí puedes mostrar un mensaje de confirmación y realizar acciones adicionales antes de cerrar la ventana
         int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas cerrar la ventana?", "Confirmar cierre", javax.swing.JOptionPane.YES_NO_OPTION);
@@ -536,8 +550,12 @@ public class RegistroVuelos extends javax.swing.JFrame {
         for (int i = 0; i < listaVuelos.getListaVuelos().size(); i++) {
             if (listaVuelos.getListaVuelos().get(i).getIdVuelo().equals(txt_idVuelo.getText())) {
                 listaVuelos.getListaVuelos().remove(i);
+                JOptionPane.showMessageDialog(this, "Vuelo eliminado correctamente!");
+                btn_MostrarActionPerformed(evt);
+                limpiarTxt();
             }
         }
+        limpiarTxt();
     }//GEN-LAST:event_btn_EliminarActionPerformed
 
     private void btn_BuscarNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarNActionPerformed
@@ -545,10 +563,12 @@ public class RegistroVuelos extends javax.swing.JFrame {
         for (int i = 0; i < listaVuelos.getListaVuelos().size(); i++) {
             if (String.valueOf(listaVuelos.getListaVuelos().get(i).getCostoTotalAerolinea()).equals(txt_costoTotal.getText())) {
                 JOptionPane.showMessageDialog(this, listaVuelos.getListaVuelos().get(i).toString());
+                limpiarTxt();
                 return;
             }
         }
         JOptionPane.showMessageDialog(this, "No se encontró el nombre");
+        limpiarTxt();
     }//GEN-LAST:event_btn_BuscarNActionPerformed
 
     private void btn_BuscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarIDActionPerformed
@@ -556,41 +576,37 @@ public class RegistroVuelos extends javax.swing.JFrame {
         for (int i = 0; i < listaVuelos.getListaVuelos().size(); i++) {
             if (listaVuelos.getListaVuelos().get(i).getIdVuelo().equals(txt_idVuelo.getText())) {
                 JOptionPane.showMessageDialog(this, listaVuelos.getListaVuelos().get(i).toString());
+                limpiarTxt();
                 return;
             }
         }
         JOptionPane.showMessageDialog(this, "No se encontró la ID");
+        limpiarTxt();
     }//GEN-LAST:event_btn_BuscarIDActionPerformed
 
     private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
         // TODO add your handling code here:
         btn_Eliminar.doClick();
         btn_Agregar.doClick();
+        limpiarTxt();
     }//GEN-LAST:event_btn_ModificarActionPerformed
 
     private void btn_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarActionPerformed
         // TODO add your handling code here:
         // Obtener los valores de los campos de texto
         String idVuelo = txt_idVuelo.getText();
-        txt_idVuelo.setText("");
 
         String idPiloto = txt_idPiloto.getText();
-        txt_idPiloto.setText("");
 
         String idCopiloto = txt_idCopiloto.getText();
-        txt_idCopiloto.setText("");
 
         String origen = txt_origen.getText();
-        txt_origen.setText("");
 
         String destino = txt_destino.getText();
-        txt_destino.setText("");
 
         String codAreopuertoSalida = txt_aeropuertoSalida.getText();
-        txt_aeropuertoSalida.setText("");
 
         String codAeropuertoEntrada = txt_aeropuertoEntrada.getText();
-        txt_aeropuertoEntrada.setText("");
 
         String fechaSalida = sumarMeses(obtenerFechaActual());
         String fechaEntrada = sumarDias(fechaSalida);
@@ -599,16 +615,12 @@ public class RegistroVuelos extends javax.swing.JFrame {
         String horaEntrada = generarHoraLlegada(horaSalida, fechaSalida, fechaEntrada);
 
         String idAvion = txt_idAvion.getText();
-        txt_idAvion.setText("");
 
         int capacidad = comporbaciones.esInt(txt_capacidad.getText());
-        txt_capacidad.setText("");
 
         double costoPasaje = comporbaciones.esDouble(txt_costoBoleto.getText());
-        txt_costoBoleto.setText("");
 
         double costoTotalAerolinea = comporbaciones.esDouble(txt_costoTotal.getText());
-        txt_costoTotal.setText("");
 
         // Crear objeto Vuelo con los valores obtenidos
         Empleado piloto;
@@ -624,6 +636,7 @@ public class RegistroVuelos extends javax.swing.JFrame {
             listaVuelos.getListaVuelos().add(vuelo);
         }
         btn_Mostrar.doClick();
+        limpiarTxt();
     }//GEN-LAST:event_btn_AgregarActionPerformed
 
     private void txt_capacidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_capacidadActionPerformed

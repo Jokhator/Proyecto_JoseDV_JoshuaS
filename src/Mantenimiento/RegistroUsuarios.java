@@ -38,6 +38,13 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         });
     }
 
+    public void limpiarTxt() {
+        txt_IdEmpleado.setText("");
+        txt_Usuario.setText("");
+        txt_Contrasenia.setText("");
+        txt_ConfirmarCont.setText("");
+    }
+
     private void confirmarCierreVentana() {
         // Aquí puedes mostrar un mensaje de confirmación y realizar acciones adicionales antes de cerrar la ventana
         int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas cerrar la ventana?", "Confirmar cierre", javax.swing.JOptionPane.YES_NO_OPTION);
@@ -58,12 +65,12 @@ public class RegistroUsuarios extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txt_idEmpleado = new javax.swing.JTextField();
-        txt_usuario = new javax.swing.JTextField();
+        txt_IdEmpleado = new javax.swing.JTextField();
+        txt_Usuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txt_confirmarCont = new javax.swing.JTextField();
+        txt_ConfirmarCont = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_Clientes = new javax.swing.JTable();
         btn_Agregar = new javax.swing.JButton();
@@ -72,16 +79,22 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         btn_BuscarN = new javax.swing.JButton();
         btn_Eliminar = new javax.swing.JButton();
         btn_Mostrar = new javax.swing.JButton();
-        txt_contrasenia = new javax.swing.JTextField();
+        txt_Contrasenia = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
         jLabel1.setText("Usuario:");
 
-        txt_usuario.addActionListener(new java.awt.event.ActionListener() {
+        txt_IdEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_usuarioActionPerformed(evt);
+                txt_IdEmpleadoActionPerformed(evt);
+            }
+        });
+
+        txt_Usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_UsuarioActionPerformed(evt);
             }
         });
 
@@ -94,10 +107,10 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
         jLabel5.setText("Id Empleado:");
 
-        txt_confirmarCont.setToolTipText("");
-        txt_confirmarCont.addActionListener(new java.awt.event.ActionListener() {
+        txt_ConfirmarCont.setToolTipText("");
+        txt_ConfirmarCont.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_confirmarContActionPerformed(evt);
+                txt_ConfirmarContActionPerformed(evt);
             }
         });
 
@@ -155,10 +168,10 @@ public class RegistroUsuarios extends javax.swing.JFrame {
             }
         });
 
-        txt_contrasenia.setToolTipText("");
-        txt_contrasenia.addActionListener(new java.awt.event.ActionListener() {
+        txt_Contrasenia.setToolTipText("");
+        txt_Contrasenia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_contraseniaActionPerformed(evt);
+                txt_ContraseniaActionPerformed(evt);
             }
         });
 
@@ -179,10 +192,10 @@ public class RegistroUsuarios extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txt_confirmarCont, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                .addComponent(txt_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                .addComponent(txt_contrasenia, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
-                            .addComponent(txt_idEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_ConfirmarCont, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(txt_Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(txt_Contrasenia, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
+                            .addComponent(txt_IdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btn_Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -199,22 +212,22 @@ public class RegistroUsuarios extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txt_idEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_IdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Agregar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Modificar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(btn_BuscarID)
-                    .addComponent(txt_contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_Contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txt_confirmarCont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_ConfirmarCont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_BuscarN))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_Eliminar)
@@ -239,26 +252,21 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuarioActionPerformed
+    private void txt_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_UsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_usuarioActionPerformed
+    }//GEN-LAST:event_txt_UsuarioActionPerformed
 
-    private void txt_confirmarContActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_confirmarContActionPerformed
+    private void txt_ConfirmarContActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ConfirmarContActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_confirmarContActionPerformed
+    }//GEN-LAST:event_txt_ConfirmarContActionPerformed
 
     private void btn_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarActionPerformed
         // TODO add your handling code here:
         // Obtener los valores de los campos de texto
-        String idEmpleado = txt_idEmpleado.getText();
-        String user = txt_usuario.getText();
-        String contra = txt_contrasenia.getText();
-        String confirmarContra = txt_confirmarCont.getText();
-
-        txt_idEmpleado.setText("");
-        txt_usuario.setText("");
-        txt_contrasenia.setText("");
-        txt_confirmarCont.setText("");
+        String idEmpleado = txt_IdEmpleado.getText();
+        String user = txt_Usuario.getText();
+        String contra = txt_Contrasenia.getText();
+        String confirmarContra = txt_ConfirmarCont.getText();
 
         Usuario usuario = new Usuario(user, contra, comporbaciones.devolverEmpleado(this, idEmpleado));
 
@@ -267,6 +275,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         }
 
         btn_Mostrar.doClick();
+        limpiarTxt();
         //listaUsuarios.write();
     }//GEN-LAST:event_btn_AgregarActionPerformed
 
@@ -274,16 +283,19 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
         btn_Eliminar.doClick();
         btn_Agregar.doClick();
+        limpiarTxt();
     }//GEN-LAST:event_btn_ModificarActionPerformed
 
     private void btn_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < listaUsuarios.getListaUsuarios().size(); i++) {
-            if (listaUsuarios.getListaUsuarios().get(i).getEmpleado().getId().equals(txt_idEmpleado.getText())) {
+            if (listaUsuarios.getListaUsuarios().get(i).getEmpleado().getId().equals(txt_IdEmpleado.getText())) {
                 listaUsuarios.getListaUsuarios().remove(i);
+                limpiarTxt();
+                return;
             }
         }
-
+        limpiarTxt();
     }//GEN-LAST:event_btn_EliminarActionPerformed
 
     private void btn_MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MostrarActionPerformed
@@ -314,28 +326,36 @@ public class RegistroUsuarios extends javax.swing.JFrame {
     private void btn_BuscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarIDActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < listaUsuarios.getListaUsuarios().size(); i++) {
-            if (listaUsuarios.getListaUsuarios().get(i).getEmpleado().getId().equals(txt_idEmpleado.getText())) {
+            if (listaUsuarios.getListaUsuarios().get(i).getEmpleado().getId().equals(txt_IdEmpleado.getText())) {
                 JOptionPane.showMessageDialog(this, listaUsuarios.getListaUsuarios().get(i).toString());
+                limpiarTxt();
                 return;
             }
         }
         JOptionPane.showMessageDialog(this, "No se encontró la ID");
+        limpiarTxt();
     }//GEN-LAST:event_btn_BuscarIDActionPerformed
 
     private void btn_BuscarNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarNActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < listaUsuarios.getListaUsuarios().size(); i++) {
-            if (listaUsuarios.getListaUsuarios().get(i).getUser().equals(txt_usuario.getText())) {
+            if (listaUsuarios.getListaUsuarios().get(i).getUser().equals(txt_Usuario.getText())) {
                 JOptionPane.showMessageDialog(this, listaUsuarios.getListaUsuarios().get(i).toString());
+                limpiarTxt();
                 return;
             }
         }
         JOptionPane.showMessageDialog(this, "No se encontró el nombre");
+        limpiarTxt();
     }//GEN-LAST:event_btn_BuscarNActionPerformed
 
-    private void txt_contraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contraseniaActionPerformed
+    private void txt_ContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ContraseniaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_contraseniaActionPerformed
+    }//GEN-LAST:event_txt_ContraseniaActionPerformed
+
+    private void txt_IdEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_IdEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -393,9 +413,9 @@ public class RegistroUsuarios extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbl_Clientes;
-    private javax.swing.JTextField txt_confirmarCont;
-    private javax.swing.JTextField txt_contrasenia;
-    private javax.swing.JTextField txt_idEmpleado;
-    private javax.swing.JTextField txt_usuario;
+    private javax.swing.JTextField txt_ConfirmarCont;
+    private javax.swing.JTextField txt_Contrasenia;
+    private javax.swing.JTextField txt_IdEmpleado;
+    private javax.swing.JTextField txt_Usuario;
     // End of variables declaration//GEN-END:variables
 }

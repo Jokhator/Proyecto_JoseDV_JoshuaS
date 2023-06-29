@@ -9,7 +9,11 @@ import Listas.ListaClientes;
 import javax.swing.JOptionPane;
 import Listas.ListaEmpleados;
 import Listas.ListaUsuarios;
+import Listas.ListaVuelos;
 import SampleClasses.Usuario;
+import SampleClasses.Vuelo;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author jdvc, jgsm
@@ -105,4 +109,42 @@ public class Comprobaciones {
             return false;
         }
     }
+
+    public boolean existenAeropuertos(String idAeropEntrada, String idAeropSalida) {
+        if (ListaVuelos.getInstancia().getListaVuelos().isEmpty()) {
+            return false;
+        } else {
+            for (Vuelo vuelo : ListaVuelos.getInstancia().getListaVuelos()) {
+                if (vuelo.getCodAeropuertoEntrada().equals(idAeropEntrada) && vuelo.getCodAreopuertoSalida().equals(idAeropSalida)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
+    public Vuelo devolverVueloAeropuertos(String idAeropEntrada, String idAeropSalida) {
+        List<Vuelo> vuelosCoincidentes = new ArrayList<>();
+
+        for (Vuelo vuelo : ListaVuelos.getInstancia().getListaVuelos()) {
+            if (vuelo.getCodAeropuertoEntrada().equals(idAeropEntrada) && vuelo.getCodAreopuertoSalida().equals(idAeropSalida)) {
+                vuelosCoincidentes.add(vuelo);
+            }
+        }
+
+        if (vuelosCoincidentes.isEmpty()) {
+            return null;
+        } else {
+            Vuelo vueloMasBarato = vuelosCoincidentes.get(0);
+
+            for (Vuelo vuelo : vuelosCoincidentes) {
+                if (vuelo.getCostoPasaje() < vueloMasBarato.getCostoPasaje() && vuelo.getCapacidad() > 0) {
+                    vueloMasBarato = vuelo;
+                }
+            }
+
+            return vueloMasBarato;
+        }
+    }
+
 }

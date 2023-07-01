@@ -39,8 +39,8 @@ public class Main {
             boolean exVuelo = false;
             for (int j = 0; j < matrizA[i].length; j++) {
                 if (i != j) {
-                    String aer1 = aeropuertos.get(i);
-                    String aer2 = aeropuertos.get(j);
+                    String aer1 = aeropuertos.get(j);
+                    String aer2 = aeropuertos.get(i);
                     //recorrer lista vuelos, buscando un vuelo que tenga los 2 aeropuertos que coincidad y si lo hacen, se le ponde un precio
                     if (comprobaciones.existenAeropuertos(aer1, aer2)) {
                         if(comprobaciones.devolverVueloAeropuertos(aer1, aer2).getCapacidad() > 0){
@@ -52,11 +52,6 @@ public class Main {
                 }else matrizA[i][j] = 0.0;
             }
         }
-        //
-        /*{{0,3,4,999999999,8,999999999}, {999999999,0,999999999,
-            999999999,5,999999999}, {999999999, 999999999, 0, 999999999, 3, 999999999},
-            {999999999,999999999,999999999,0,999999999,999999999}, {999999999, 999999999,
-                999999999, 7, 0, 3}, {999999999, 999999999, 999999999, 2, 999999999, 0}};*/
         CaminosMinimos ruta = new CaminosMinimos();
         //ordenarListas(matrizA);
         JOptionPane.showMessageDialog(null, ruta.algoritmoFloyd(matrizA));

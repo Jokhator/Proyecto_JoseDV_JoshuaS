@@ -95,6 +95,11 @@ public class ListaDeVuelos extends javax.swing.JFrame {
 
         btn_caro.setBackground(new java.awt.Color(189, 224, 254));
         btn_caro.setText("Costoso");
+        btn_caro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_caroActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Fecha Desde");
 
@@ -212,7 +217,7 @@ public class ListaDeVuelos extends javax.swing.JFrame {
         double total = 0;
         for (int i = 0; i < listaVuelos.getListaVuelos().size(); i++) {
             Vuelo get = listaVuelos.getListaVuelos().get(i);
-            total += get.getCostoPasaje();
+            total += get.getCostoTotalAerolinea();
         }
         total = total / listaVuelos.getListaVuelos().size();
         
@@ -222,7 +227,7 @@ public class ListaDeVuelos extends javax.swing.JFrame {
     private void btn_vuelosDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vuelosDisponiblesActionPerformed
         // TODO add your handling code here:
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        // Obtener el modelo de la tabla existente
+        
         modeloTabla = new DefaultTableModel();
         modeloTabla.addColumn("IdVuelo");
         modeloTabla.addColumn("Nombre Piloto");
@@ -273,7 +278,29 @@ public class ListaDeVuelos extends javax.swing.JFrame {
 
     private void btn_baratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_baratoActionPerformed
         // TODO add your handling code here:
+        if(!listaVuelos.getListaVuelos().isEmpty()){
+        Vuelo barato = listaVuelos.getListaVuelos().get(0);
+        for (Vuelo vuelo : listaVuelos.getListaVuelos()) {
+            if(vuelo.getCostoTotalAerolinea()< barato.getCostoTotalAerolinea()){
+                barato = vuelo;
+            }
+        }
+        JOptionPane.showMessageDialog(this, "El vuelo de menor precio cuesta: " + barato.getCostoTotalAerolinea() + "\n ID vuelo: " + barato.getIdVuelo() + ", fecha salida: " + barato.getFechaSalida() + ", costo total: " + barato.getCostoTotalAerolinea());
+        }
     }//GEN-LAST:event_btn_baratoActionPerformed
+
+    private void btn_caroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_caroActionPerformed
+        // TODO add your handling code here:
+        if(!listaVuelos.getListaVuelos().isEmpty()){
+        Vuelo caro = listaVuelos.getListaVuelos().get(0);
+        for (Vuelo vuelo : listaVuelos.getListaVuelos()) {
+            if(vuelo.getCostoTotalAerolinea() > caro.getCostoTotalAerolinea()){
+                caro = vuelo;
+            }
+        }
+        JOptionPane.showMessageDialog(this, "El vuelo de mayor precio cuesta: " + caro.getCostoTotalAerolinea() + "\n ID vuelo: " + caro.getIdVuelo() + ", fecha salida: " + caro.getFechaSalida() + ", costo total: " + caro.getCostoTotalAerolinea());
+        }
+    }//GEN-LAST:event_btn_caroActionPerformed
 
     /**
          * @param args the command line arguments

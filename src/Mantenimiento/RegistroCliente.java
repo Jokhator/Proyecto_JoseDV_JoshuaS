@@ -4,28 +4,28 @@
  */
 package Mantenimiento;
 
-import SampleClasses.Empleado;
-import Listas.ListaEmpleados;
+import SampleClasses.Cliente;
+import Listas.ListaCliente;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
-import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import Seguridad.Comprobaciones;
+import javax.swing.WindowConstants;
 
 /**
  *
  * @author jdvc, jgsm
  */
-public class RegistroEmpleados extends javax.swing.JFrame {
+public class RegistroCliente extends javax.swing.JFrame {
 
     /**
-     * Creates new form RegistroEmpleados
+     * Creates new form AgregarEmpleados
      */
-    ListaEmpleados listaEmps = ListaEmpleados.getInstancia();
+    ListaCliente listaClientes = ListaCliente.getInstancia();
     DefaultTableModel modeloTabla;
     Comprobaciones comporbaciones = new Comprobaciones();
 
-    public RegistroEmpleados() {
+    public RegistroCliente() {
         initComponents();
         cmbEdad();
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -37,13 +37,6 @@ public class RegistroEmpleados extends javax.swing.JFrame {
         });
     }
 
-    public void limpiarTxt() {
-        txt_Id.setText("");
-        txt_Nombre.setText("");
-        txt_Telefono.setText("");
-        txt_Salario.setText("");
-    }
-
     public void cmbEdad() {
         for (int i = 20; i <= 120; i++) {
             String num = String.valueOf(i);
@@ -52,11 +45,19 @@ public class RegistroEmpleados extends javax.swing.JFrame {
         }
     }
 
+    public void limpiarTxt() {
+        txt_Pasaporte.setText("");
+        txt_Nombre.setText("");
+        txt_Telefono.setText("");
+        txt_Nacionalidad.setText("");
+        txt_Correo.setText("");
+    }
+
     private void confirmarCierreVentana() {
         // Aquí puedes mostrar un mensaje de confirmación y realizar acciones adicionales antes de cerrar la ventana
         int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas cerrar la ventana?", "Confirmar cierre", javax.swing.JOptionPane.YES_NO_OPTION);
         if (opcion == javax.swing.JOptionPane.YES_OPTION) {
-            listaEmps.write();
+            listaClientes.write();
             dispose(); // Cerrar la ventana
         }
     }
@@ -72,7 +73,7 @@ public class RegistroEmpleados extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txt_Id = new javax.swing.JTextField();
+        txt_Pasaporte = new javax.swing.JTextField();
         txt_Nombre = new javax.swing.JTextField();
         cmb_Edad = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -81,25 +82,25 @@ public class RegistroEmpleados extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txt_Telefono = new javax.swing.JTextField();
-        txt_Salario = new javax.swing.JTextField();
+        txt_Nacionalidad = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_Empleados = new javax.swing.JTable();
+        tbl_Clientes = new javax.swing.JTable();
         btn_Agregar = new javax.swing.JButton();
         btn_Modificar = new javax.swing.JButton();
         btn_BuscarID = new javax.swing.JButton();
         btn_BuscarN = new javax.swing.JButton();
         btn_Eliminar = new javax.swing.JButton();
         btn_Mostrar = new javax.swing.JButton();
-        cmb_Depatarmentos = new javax.swing.JComboBox<>();
+        txt_Correo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
         jLabel1.setText("Nombre:");
 
-        txt_Id.addActionListener(new java.awt.event.ActionListener() {
+        txt_Pasaporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_IdActionPerformed(evt);
+                txt_PasaporteActionPerformed(evt);
             }
         });
 
@@ -122,13 +123,13 @@ public class RegistroEmpleados extends javax.swing.JFrame {
         jLabel4.setText("Telefono:");
 
         jLabel5.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
-        jLabel5.setText("Id:");
+        jLabel5.setText("Pasaporte:");
 
         jLabel6.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
-        jLabel6.setText("Departamento:");
+        jLabel6.setText("Correo Electronico");
 
         jLabel7.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
-        jLabel7.setText("Salario:");
+        jLabel7.setText("Nacionalidad:");
 
         txt_Telefono.setToolTipText("");
         txt_Telefono.addActionListener(new java.awt.event.ActionListener() {
@@ -137,13 +138,13 @@ public class RegistroEmpleados extends javax.swing.JFrame {
             }
         });
 
-        txt_Salario.addActionListener(new java.awt.event.ActionListener() {
+        txt_Nacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_SalarioActionPerformed(evt);
+                txt_NacionalidadActionPerformed(evt);
             }
         });
 
-        tbl_Empleados.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_Clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -151,8 +152,8 @@ public class RegistroEmpleados extends javax.swing.JFrame {
 
             }
         ));
-        tbl_Empleados.setEnabled(false);
-        jScrollPane1.setViewportView(tbl_Empleados);
+        tbl_Clientes.setEnabled(false);
+        jScrollPane1.setViewportView(tbl_Clientes);
 
         btn_Agregar.setText("Agregar");
         btn_Agregar.addActionListener(new java.awt.event.ActionListener() {
@@ -198,10 +199,10 @@ public class RegistroEmpleados extends javax.swing.JFrame {
             }
         });
 
-        cmb_Depatarmentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrativo", "Mostrador", "Vendedor", "Piloto", "Tripulante", "Seguridad", "Equipaje" }));
-        cmb_Depatarmentos.addActionListener(new java.awt.event.ActionListener() {
+        txt_Correo.setToolTipText("");
+        txt_Correo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_DepatarmentosActionPerformed(evt);
+                txt_CorreoActionPerformed(evt);
             }
         });
 
@@ -227,9 +228,9 @@ public class RegistroEmpleados extends javax.swing.JFrame {
                                 .addComponent(txt_Telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                                 .addComponent(txt_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                                 .addComponent(cmb_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txt_Salario, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                .addComponent(cmb_Depatarmentos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(txt_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_Nacionalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(txt_Correo, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
+                            .addComponent(txt_Pasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btn_Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -246,7 +247,7 @@ public class RegistroEmpleados extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txt_Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Pasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Agregar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -267,11 +268,11 @@ public class RegistroEmpleados extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(btn_Eliminar)
-                    .addComponent(cmb_Depatarmentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txt_Salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Mostrar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -300,9 +301,9 @@ public class RegistroEmpleados extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_TelefonoActionPerformed
 
-    private void txt_SalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_SalarioActionPerformed
+    private void txt_NacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NacionalidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_SalarioActionPerformed
+    }//GEN-LAST:event_txt_NacionalidadActionPerformed
 
     private void cmb_EdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_EdadActionPerformed
         // TODO add your handling code here:   
@@ -311,29 +312,26 @@ public class RegistroEmpleados extends javax.swing.JFrame {
     private void btn_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarActionPerformed
         // TODO add your handling code here:
         // Obtener los valores de los campos de texto
-        String id = txt_Id.getText();
-        String nom = txt_Nombre.getText();
+        String pasaporte = txt_Pasaporte.getText();
+        String nombre = txt_Nombre.getText();
         String edadSeleccionada = cmb_Edad.getSelectedItem().toString();
         int edad = Integer.parseInt(edadSeleccionada);
-        String telefonoTexto = txt_Telefono.getText();
-        String departamento = String.valueOf(cmb_Depatarmentos.getSelectedItem());
-        String salarioTexto = txt_Salario.getText();
         int telefono = Integer.parseInt(txt_Telefono.getText());
+        String correo = txt_Correo.getText();
+        String nacionalidad = txt_Nacionalidad.getText();
 
-        // Verificar que el campo de salario solo contenga números
-        double salario = comporbaciones.esDouble(salarioTexto);
-        // Obtener la fecha actual
         LocalDate fechaActual = LocalDate.now();
         String fecha = fechaActual.getDayOfMonth() + "/" + fechaActual.getMonthValue() + "/" + fechaActual.getYear();
 
-        // Crear el objeto Empleado con los valores proporcionados
-        Empleado empleado = new Empleado(id, nom, edad, telefono, departamento, salario, fecha);
-        if (!comporbaciones.existeEmpleado(this, id) && telefono > 0 && salario > 0) {
-            listaEmps.getListaEmpleados().add(empleado);
+        Cliente cliente = new Cliente(pasaporte, nombre, edad, telefono, correo, nacionalidad);
+
+        if (comporbaciones.existeCliente(this, pasaporte) && telefono > 0) {
+            listaClientes.getListaClientes().add(cliente);
         }
+
         btn_Mostrar.doClick();
         limpiarTxt();
-
+        listaClientes.write();
     }//GEN-LAST:event_btn_AgregarActionPerformed
 
     private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
@@ -345,10 +343,10 @@ public class RegistroEmpleados extends javax.swing.JFrame {
 
     private void btn_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarActionPerformed
         // TODO add your handling code here:
-        for (int i = 0; i < listaEmps.getListaEmpleados().size(); i++) {
-            if (listaEmps.getListaEmpleados().get(i).getId().equals(txt_Id.getText())) {
-                listaEmps.getListaEmpleados().remove(i);
-                btn_MostrarActionPerformed(evt);
+        for (int i = 0; i < listaClientes.getListaClientes().size(); i++) {
+            if (listaClientes.getListaClientes().get(i).getPasaporte().equals(txt_Pasaporte.getText())) {
+                listaClientes.getListaClientes().remove(i);
+                txt_Pasaporte.setText("");
                 limpiarTxt();
             }
         }
@@ -358,40 +356,37 @@ public class RegistroEmpleados extends javax.swing.JFrame {
     private void btn_MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MostrarActionPerformed
         // TODO add your handling code here:
         modeloTabla = new DefaultTableModel();
-        modeloTabla.addColumn("ID");
+        modeloTabla.addColumn("Pasaporte");
         modeloTabla.addColumn("Nombre");
         modeloTabla.addColumn("Edad");
         modeloTabla.addColumn("Teléfono");
-        modeloTabla.addColumn("Departamento");
-        modeloTabla.addColumn("Salario");
-        modeloTabla.addColumn("Fecha");
-        for (Empleado empleado : listaEmps.getListaEmpleados()) {
-            Object[] fila = new Object[7]; // Crea un arreglo para almacenar los datos de cada empleado
+        modeloTabla.addColumn("Correo");
+        modeloTabla.addColumn("Nacionalidad");
 
-            fila[0] = empleado.getId();
-            fila[1] = empleado.getNom();
-            fila[2] = empleado.getEdad();
-            fila[3] = empleado.getTelefono();
-            fila[4] = empleado.getDepartamento();
-            fila[5] = empleado.getSalario();
-            fila[6] = empleado.getFecha();
+        for (Cliente cliente : listaClientes.getListaClientes()) {
+            Object[] fila = new Object[6]; // Crea un arreglo para almacenar los datos de cada cliente
+
+            fila[0] = cliente.getPasaporte();
+            fila[1] = cliente.getNombre();
+            fila[2] = cliente.getEdad();
+            fila[3] = cliente.getTelefono();
+            fila[4] = cliente.getCorreo();
+            fila[5] = cliente.getNacionalidad();
 
             modeloTabla.addRow(fila); // Agrega la fila al modelo de tabla
         }
-        tbl_Empleados.setModel(modeloTabla);
+
+        tbl_Clientes.setModel(modeloTabla);
         modeloTabla.fireTableDataChanged();
+
         //listaEmps.write();
     }//GEN-LAST:event_btn_MostrarActionPerformed
 
-    private void cmb_DepatarmentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_DepatarmentosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_DepatarmentosActionPerformed
-
     private void btn_BuscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarIDActionPerformed
         // TODO add your handling code here:
-        for (int i = 0; i < listaEmps.getListaEmpleados().size(); i++) {
-            if (listaEmps.getListaEmpleados().get(i).getId().equals(txt_Id.getText())) {
-                JOptionPane.showMessageDialog(this, listaEmps.getListaEmpleados().get(i).toString());
+        for (int i = 0; i < listaClientes.getListaClientes().size(); i++) {
+            if (listaClientes.getListaClientes().get(i).getPasaporte().equals(txt_Pasaporte.getText())) {
+                JOptionPane.showMessageDialog(this, listaClientes.getListaClientes().get(i).toString());
                 limpiarTxt();
                 return;
             }
@@ -402,9 +397,9 @@ public class RegistroEmpleados extends javax.swing.JFrame {
 
     private void btn_BuscarNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarNActionPerformed
         // TODO add your handling code here:
-        for (int i = 0; i < listaEmps.getListaEmpleados().size(); i++) {
-            if (listaEmps.getListaEmpleados().get(i).getNom().equals(txt_Nombre.getText())) {
-                JOptionPane.showMessageDialog(this, listaEmps.getListaEmpleados().get(i).toString());
+        for (int i = 0; i < listaClientes.getListaClientes().size(); i++) {
+            if (listaClientes.getListaClientes().get(i).getNombre().equals(txt_Nombre.getText())) {
+                JOptionPane.showMessageDialog(this, listaClientes.getListaClientes().get(i).toString());
                 limpiarTxt();
                 return;
             }
@@ -413,9 +408,13 @@ public class RegistroEmpleados extends javax.swing.JFrame {
         limpiarTxt();
     }//GEN-LAST:event_btn_BuscarNActionPerformed
 
-    private void txt_IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdActionPerformed
+    private void txt_CorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_CorreoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_IdActionPerformed
+    }//GEN-LAST:event_txt_CorreoActionPerformed
+
+    private void txt_PasaporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_PasaporteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_PasaporteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -434,21 +433,27 @@ public class RegistroEmpleados extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroEmpleados().setVisible(true);
+                new RegistroCliente().setVisible(true);
             }
         });
     }
@@ -460,7 +465,6 @@ public class RegistroEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton btn_Eliminar;
     private javax.swing.JButton btn_Modificar;
     private javax.swing.JButton btn_Mostrar;
-    private javax.swing.JComboBox<String> cmb_Depatarmentos;
     private javax.swing.JComboBox<String> cmb_Edad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -470,10 +474,11 @@ public class RegistroEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbl_Empleados;
-    private javax.swing.JTextField txt_Id;
+    private javax.swing.JTable tbl_Clientes;
+    private javax.swing.JTextField txt_Correo;
+    private javax.swing.JTextField txt_Nacionalidad;
     private javax.swing.JTextField txt_Nombre;
-    private javax.swing.JTextField txt_Salario;
+    private javax.swing.JTextField txt_Pasaporte;
     private javax.swing.JTextField txt_Telefono;
     // End of variables declaration//GEN-END:variables
 }

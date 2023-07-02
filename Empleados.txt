@@ -1,3 +1,0 @@
-1|Joshua|20|85346950|Administrativo|123456.0|28/6/2023
-2|Jose Daniel|20|88888888|Mostrador|10.0|28/6/2023
-ABZ213|John|20|12344321|Mostrador|123453.0|28/6/2023

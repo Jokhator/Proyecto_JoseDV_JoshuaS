@@ -4,7 +4,7 @@
  */
 package Vista;
 
-import Listas.ListaVuelos;
+import Listas.ListaVuelo;
 import SampleClasses.Vuelo;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,7 +23,7 @@ public class ListaDeVuelos extends javax.swing.JFrame {
     /**
      * Creates new form ListaDeVuelos
      */
-    ListaVuelos listaVuelos = ListaVuelos.getInstancia();
+    ListaVuelo listaVuelos = ListaVuelo.getInstancia();
     DefaultTableModel modeloTabla;
 
     public ListaDeVuelos() {

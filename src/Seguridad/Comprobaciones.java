@@ -5,11 +5,11 @@
 package Seguridad;
 
 import SampleClasses.Empleado;
-import Listas.ListaClientes;
+import Listas.ListaCliente;
 import javax.swing.JOptionPane;
-import Listas.ListaEmpleados;
-import Listas.ListaUsuarios;
-import Listas.ListaVuelos;
+import Listas.ListaEmpleado;
+import Listas.ListaUsuario;
+import Listas.ListaVuelo;
 import SampleClasses.Usuario;
 import SampleClasses.Vuelo;
 import java.util.ArrayList;
@@ -45,16 +45,16 @@ public class Comprobaciones {
     }
 
     public boolean existeEmpleado(javax.swing.JFrame form, String id) {
-        if (ListaEmpleados.getInstancia().getListaEmpleados().isEmpty()) {
+        if (ListaEmpleado.getInstancia().getListaEmpleados().isEmpty()) {
             return false;
         } else {
             int cont = 0;
-            for (int i = 0; i < ListaEmpleados.getInstancia().getListaEmpleados().size(); i++) {
-                if (!ListaEmpleados.getInstancia().getListaEmpleados().get(i).getId().equals(id)) {
+            for (int i = 0; i < ListaEmpleado.getInstancia().getListaEmpleados().size(); i++) {
+                if (!ListaEmpleado.getInstancia().getListaEmpleados().get(i).getId().equals(id)) {
                     cont++;
                 }
             }
-            if (cont == ListaEmpleados.getInstancia().getListaEmpleados().size()) {
+            if (cont == ListaEmpleado.getInstancia().getListaEmpleados().size()) {
                 return false;
             } else {
                 //JOptionPane.showMessageDialog(form, "No robe indentidades");
@@ -64,10 +64,10 @@ public class Comprobaciones {
     }
 
     public Empleado devolverEmpleado(javax.swing.JFrame form, String id) {
-        if (ListaEmpleados.getInstancia().getListaEmpleados().isEmpty()) {
+        if (ListaEmpleado.getInstancia().getListaEmpleados().isEmpty()) {
             return null;
         } else {
-            for (Empleado empleado : ListaEmpleados.getInstancia().getListaEmpleados()) {
+            for (Empleado empleado : ListaEmpleado.getInstancia().getListaEmpleados()) {
                 if (empleado.getId().equals(id)) {
                     return empleado; // Devuelve el empleado si se encuentra la ID
                 }
@@ -78,16 +78,16 @@ public class Comprobaciones {
     }
 
     public boolean existeCliente(javax.swing.JFrame form, String pasaporte) {
-        if (ListaClientes.getInstancia().getListaClientes().isEmpty()) {
+        if (ListaCliente.getInstancia().getListaClientes().isEmpty()) {
             return false;
         } else {
             int cont = 0;
-            for (int i = 0; i < ListaClientes.getInstancia().getListaClientes().size(); i++) {
-                if (!ListaClientes.getInstancia().getListaClientes().get(i).getPasaporte().equals(pasaporte)) {
+            for (int i = 0; i < ListaCliente.getInstancia().getListaClientes().size(); i++) {
+                if (!ListaCliente.getInstancia().getListaClientes().get(i).getPasaporte().equals(pasaporte)) {
                     cont++;
                 }
             }
-            if (cont == ListaClientes.getInstancia().getListaClientes().size()) {
+            if (cont == ListaCliente.getInstancia().getListaClientes().size()) {
                 return false;
             } else {
                 JOptionPane.showMessageDialog(form, "Cliente encontrado.");
@@ -97,10 +97,10 @@ public class Comprobaciones {
     }
 
     public boolean existeUsuario(javax.swing.JFrame form, String username) {
-        if (ListaUsuarios.getInstancia().getListaUsuarios().isEmpty()) {
+        if (ListaUsuario.getInstancia().getListaUsuarios().isEmpty()) {
             return false;
         } else {
-            for (Usuario usuario : ListaUsuarios.getInstancia().getListaUsuarios()) {
+            for (Usuario usuario : ListaUsuario.getInstancia().getListaUsuarios()) {
                 if (usuario.getUser().equals(username)) {
                     JOptionPane.showMessageDialog(form, "Usuario encontrado.");
                     return true;
@@ -111,10 +111,10 @@ public class Comprobaciones {
     }
 
     public boolean existenAeropuertos(String idAeropEntrada, String idAeropSalida) {
-        if (ListaVuelos.getInstancia().getListaVuelos().isEmpty()) {
+        if (ListaVuelo.getInstancia().getListaVuelos().isEmpty()) {
             return false;
         } else {
-            for (Vuelo vuelo : ListaVuelos.getInstancia().getListaVuelos()) {
+            for (Vuelo vuelo : ListaVuelo.getInstancia().getListaVuelos()) {
                 if (vuelo.getCodAeropuertoEntrada().equals(idAeropEntrada) && vuelo.getCodAreopuertoSalida().equals(idAeropSalida)) {
                     return true;
                 }
@@ -126,7 +126,7 @@ public class Comprobaciones {
     public Vuelo devolverVueloAeropuertos(String idAeropEntrada, String idAeropSalida) {
         List<Vuelo> vuelosCoincidentes = new ArrayList<>();
 
-        for (Vuelo vuelo : ListaVuelos.getInstancia().getListaVuelos()) {
+        for (Vuelo vuelo : ListaVuelo.getInstancia().getListaVuelos()) {
             if (vuelo.getCodAeropuertoEntrada().equals(idAeropEntrada) && vuelo.getCodAreopuertoSalida().equals(idAeropSalida)) {
                 vuelosCoincidentes.add(vuelo);
             }

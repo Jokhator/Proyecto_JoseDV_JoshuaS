@@ -4,10 +4,8 @@
  */
 package Mantenimiento;
 
-import SampleClasses.Cliente;
-import Listas.ListaClientes;
-import Listas.ListaUsuarios;
-import java.time.LocalDate;
+import Seguridad.Encriptacion;
+import Listas.ListaUsuario;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
@@ -18,16 +16,17 @@ import SampleClasses.Usuario;
  *
  * @author jdvc, jgsm
  */
-public class RegistroUsuarios extends javax.swing.JFrame {
+public class RegistroUsuario extends javax.swing.JFrame {
 
     /**
      * Creates new form AgregarEmpleados
      */
-    ListaUsuarios listaUsuarios = ListaUsuarios.getInstancia();
+    ListaUsuario listaUsuarios = ListaUsuario.getInstancia();
     DefaultTableModel modeloTabla;
     Comprobaciones comporbaciones = new Comprobaciones();
+    Encriptacion encriptacion = new Encriptacion();
 
-    public RegistroUsuarios() {
+    public RegistroUsuario() {
         initComponents();
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -269,7 +268,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         String contra = txt_Contrasenia.getText();
         String confirmarContra = txt_ConfirmarCont.getText();
 
-        Usuario usuario = new Usuario(user, contra, comporbaciones.devolverEmpleado(this, idEmpleado));
+        Usuario usuario = new Usuario(user, encriptacion.encriptar(contra), comporbaciones.devolverEmpleado(this, idEmpleado));
 
         if (!comporbaciones.existeUsuario(this, idEmpleado) && contra.equals(confirmarContra) && comporbaciones.existeEmpleado(this, idEmpleado)) {
             listaUsuarios.getListaUsuarios().add(usuario);
@@ -375,14 +374,22 @@ public class RegistroUsuarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -395,7 +402,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroUsuarios().setVisible(true);
+                new RegistroUsuario().setVisible(true);
             }
         });
     }

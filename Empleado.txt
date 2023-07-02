@@ -1,0 +1,2 @@
+1|Joshua|20|1|Administrativo|1.0|2/7/2023
+2|Jose Daniel|20|2|Mostrador|2.0|2/7/2023

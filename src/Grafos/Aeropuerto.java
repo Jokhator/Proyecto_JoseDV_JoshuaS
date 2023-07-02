@@ -10,7 +10,7 @@ package Grafos;
  * @time 4:31:58 PM
  * @date Jun 28, 2023
  */
-public class Aeropuertos {
+public class Aeropuerto {
     String idAeropuerto;
     int repeticiones;
 }

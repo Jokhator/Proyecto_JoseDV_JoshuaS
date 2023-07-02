@@ -18,19 +18,19 @@ import java.util.ArrayList;
  * @time 7:02:54 PM
  * @date Jun 22, 2023
  */
-public class ListaEmpleados {
+public class ListaEmpleado {
 
-    private static ListaEmpleados instancia;
-    private ArrayList<Empleado> listaEmpleados;
+    private static ListaEmpleado instancia;
+    private final ArrayList<Empleado> listaEmpleados;
 
-    private ListaEmpleados() {
+    private ListaEmpleado() {
         listaEmpleados = new ArrayList<>();
         cargarEmpleadosDesdeArchivo();
     }
 
-    public static ListaEmpleados getInstancia() {
+    public static ListaEmpleado getInstancia() {
         if (instancia == null) {
-            instancia = new ListaEmpleados();
+            instancia = new ListaEmpleado();
         }
         return instancia;
     }
@@ -40,7 +40,7 @@ public class ListaEmpleados {
     }
 
     private void cargarEmpleadosDesdeArchivo() {
-        String nombreArchivo = "Empleados.txt";
+        String nombreArchivo = "Empleado.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
@@ -65,7 +65,7 @@ public class ListaEmpleados {
     }
 
     public void write() {
-        String nombreArchivo = "Empleados.txt";
+        String nombreArchivo = "Empleado.txt";
 
         try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(nombreArchivo, false)))) {
             for (Empleado empleado : listaEmpleados) {

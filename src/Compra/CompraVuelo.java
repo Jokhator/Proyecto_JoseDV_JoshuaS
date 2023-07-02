@@ -4,7 +4,7 @@
  */
 package Compra;
 
-import Listas.ListaClientes;
+import Listas.ListaCliente;
 import javax.swing.JOptionPane;
 import Seguridad.Comprobaciones;
 import javax.swing.WindowConstants;
@@ -15,7 +15,7 @@ import javax.swing.WindowConstants;
  */
 public class CompraVuelo extends javax.swing.JFrame {
 
-    ListaClientes listaClientes = ListaClientes.getInstancia();
+    ListaCliente listaClientes = ListaCliente.getInstancia();
     Comprobaciones comprobaciones = new Comprobaciones();
 
     /**

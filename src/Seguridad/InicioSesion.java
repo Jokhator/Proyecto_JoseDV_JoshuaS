@@ -4,7 +4,7 @@
  */
 package Seguridad;
 
-import Listas.ListaUsuarios;
+import Listas.ListaUsuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,7 +13,8 @@ import javax.swing.JOptionPane;
  */
 public class InicioSesion extends javax.swing.JFrame {
 
-    ListaUsuarios lista = ListaUsuarios.getInstancia();
+    ListaUsuario lista = ListaUsuario.getInstancia();
+    Encriptacion encriptacion = new Encriptacion();
 
     /**
      * Creates new form InicioSesion
@@ -133,7 +134,8 @@ public class InicioSesion extends javax.swing.JFrame {
         boolean bandera = false;
         for (int i = 0; i < lista.getListaUsuarios().size(); i++) {
             if (lista.getListaUsuarios().get(i).getUser().equals(txt_Usuario.getText())) {
-                if (lista.getListaUsuarios().get(i).getContrasenia().equals(txt_Contra.getText())) {
+                String claveDesencriptada = encriptacion.desEncriptar(lista.getListaUsuarios().get(i).getContrasenia());
+                if (claveDesencriptada.equals(txt_Contra.getText())) {
                     bandera = true;
                     JOptionPane.showMessageDialog(this, "Sesion iniciada correctamente!");
                     VistaUsuario vistaUsuario = new VistaUsuario(lista.getListaUsuarios().get(i));

@@ -21,20 +21,20 @@ import Seguridad.Comprobaciones;
  * @time 9:12:05 AM
  * @date Jun 23, 2023
  */
-public class ListaVuelos {
+public class ListaVuelo {
 
-    private static ListaVuelos instancia;
-    private ArrayList<Vuelo> listaVuelos;
+    private static ListaVuelo instancia;
+    private final ArrayList<Vuelo> listaVuelos;
     Comprobaciones comp = new Comprobaciones();
 
-    private ListaVuelos() {
+    private ListaVuelo() {
         listaVuelos = new ArrayList<>();
         cargarVuelosDesdeArchivo();
     }
 
-    public static ListaVuelos getInstancia() {
+    public static ListaVuelo getInstancia() {
         if (instancia == null) {
-            instancia = new ListaVuelos();
+            instancia = new ListaVuelo();
         }
         return instancia;
     }
@@ -44,7 +44,7 @@ public class ListaVuelos {
     }
 
     private void cargarVuelosDesdeArchivo() {
-        String nombreArchivo = "Vuelos.txt";
+        String nombreArchivo = "Vuelo.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
@@ -83,7 +83,7 @@ public class ListaVuelos {
     }
 
     public void write() {
-        String nombreArchivo = "Vuelos.txt";
+        String nombreArchivo = "Vuelo.txt";
 
         try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(nombreArchivo, false)))) {
             for (Vuelo vuelo : listaVuelos) {
@@ -101,7 +101,7 @@ public class ListaVuelos {
         // Por simplicidad, se asume que ya existe una lista de empleados cargada y accesible.
         // Puedes utilizar un ciclo for o métodos de búsqueda según tu implementación.
         // Este es solo un ejemplo básico:
-        for (Empleado empleado : ListaEmpleados.getInstancia().getListaEmpleados()) {
+        for (Empleado empleado : ListaEmpleado.getInstancia().getListaEmpleados()) {
             if (empleado.getId().equals(id)) {
                 return empleado;
             }

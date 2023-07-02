@@ -12,26 +12,25 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  * @author jdvc, jgsm
  * @time 2:17:16 PM
  * @date Jun 23, 2023
  */
-public class ListaClientes {
+public class ListaCliente {
 
-    private static ListaClientes instancia;
-    private ArrayList<Cliente> listaClientes;
+    private static ListaCliente instancia;
+    private final ArrayList<Cliente> listaClientes;
 
-    private ListaClientes() {
+    private ListaCliente() {
         listaClientes = new ArrayList<>();
         cargarClientesDesdeArchivo();
     }
 
-    public static ListaClientes getInstancia() {
+    public static ListaCliente getInstancia() {
         if (instancia == null) {
-            instancia = new ListaClientes();
+            instancia = new ListaCliente();
         }
         return instancia;
     }

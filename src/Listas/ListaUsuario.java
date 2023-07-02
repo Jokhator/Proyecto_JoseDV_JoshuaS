@@ -4,7 +4,6 @@
  */
 package Listas;
 
-import SampleClasses.Cliente;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -12,7 +11,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import SampleClasses.Usuario;
 import Seguridad.Comprobaciones;
 import SampleClasses.Empleado;
@@ -23,19 +21,19 @@ import SampleClasses.Empleado;
  * @date Jun 23, 2023
  */
 
-public class ListaUsuarios {
-    private static ListaUsuarios instancia;
-    private ArrayList<Usuario> listaUsuarios;
+public class ListaUsuario {
+    private static ListaUsuario instancia;
+    private final ArrayList<Usuario> listaUsuarios;
     Comprobaciones comprobaciones = new Comprobaciones();
     
-    private ListaUsuarios() {
+    private ListaUsuario() {
         listaUsuarios = new ArrayList<>();
         cargarUsuariosDesdeArchivo();
     }
 
-    public static ListaUsuarios getInstancia() {
+    public static ListaUsuario getInstancia() {
         if (instancia == null) {
-            instancia = new ListaUsuarios();
+            instancia = new ListaUsuario();
         }
         return instancia;
     }
@@ -45,7 +43,7 @@ public class ListaUsuarios {
     }
 
     private void cargarUsuariosDesdeArchivo() {
-        String nombreArchivo = "Usuarios.txt";
+        String nombreArchivo = "Usuario.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
@@ -69,7 +67,7 @@ public class ListaUsuarios {
     }
 
     public void write() {
-        String nombreArchivo = "Usuarios.txt";
+        String nombreArchivo = "Usuario.txt";
 
         try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(nombreArchivo, false)))) {
             for (Usuario usuario : listaUsuarios) {

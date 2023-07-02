@@ -9,7 +9,7 @@ package Grafos;
  * @time 4:20:51 PM
  * @date Jun 28, 2023
  */
-import Listas.ListaVuelos;
+import Listas.ListaVuelo;
 import SampleClasses.Vuelo;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -76,7 +76,7 @@ public class Main {
     }
     
     public static void matrix() {
-    ListaVuelos listaVuelos = ListaVuelos.getInstancia();
+    ListaVuelo listaVuelos = ListaVuelo.getInstancia();
     for (int i = 0; i < listaVuelos.getListaVuelos().size(); i++) {
         boolean existe = false;
         Vuelo vuelo = listaVuelos.getListaVuelos().get(i);

@@ -5,10 +5,10 @@
 package Seguridad;
 
 import Compra.CompraVuelo;
-import Mantenimiento.RegistroClientes;
-import Mantenimiento.RegistroEmpleados;
-import Mantenimiento.RegistroUsuarios;
-import Mantenimiento.RegistroVuelos;
+import Mantenimiento.RegistroCliente;
+import Mantenimiento.RegistroEmpleado;
+import Mantenimiento.RegistroUsuario;
+import Mantenimiento.RegistroVuelo;
 import SampleClasses.Usuario;
 import javax.swing.JOptionPane;
 
@@ -18,10 +18,10 @@ import javax.swing.JOptionPane;
  */
 public class VistaUsuario extends javax.swing.JFrame {
     
-    RegistroClientes registroClientes = new RegistroClientes();
-    RegistroEmpleados registroEmpleados = new RegistroEmpleados();
-    RegistroUsuarios registroUsuarios = new RegistroUsuarios();
-    RegistroVuelos registroVuelos = new RegistroVuelos();
+    RegistroCliente registroClientes = new RegistroCliente();
+    RegistroEmpleado registroEmpleados = new RegistroEmpleado();
+    RegistroUsuario registroUsuarios = new RegistroUsuario();
+    RegistroVuelo registroVuelos = new RegistroVuelo();
     CompraVuelo compraVuelo = new CompraVuelo();
     Usuario usuario;
 

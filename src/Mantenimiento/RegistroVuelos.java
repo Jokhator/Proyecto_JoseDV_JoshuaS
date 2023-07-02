@@ -338,6 +338,7 @@ public class RegistroVuelos extends javax.swing.JFrame {
 
             }
         ));
+        tbl_vuelos.setEnabled(false);
         jScrollPane1.setViewportView(tbl_vuelos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

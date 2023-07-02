@@ -151,6 +151,7 @@ public class RegistroEmpleados extends javax.swing.JFrame {
 
             }
         ));
+        tbl_Empleados.setEnabled(false);
         jScrollPane1.setViewportView(tbl_Empleados);
 
         btn_Agregar.setText("Agregar");

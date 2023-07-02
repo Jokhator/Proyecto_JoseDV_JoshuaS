@@ -118,6 +118,7 @@ public class CompraVuelo extends javax.swing.JFrame {
 
             }
         ));
+        tbl_Empleados.setEnabled(false);
         jScrollPane1.setViewportView(tbl_Empleados);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

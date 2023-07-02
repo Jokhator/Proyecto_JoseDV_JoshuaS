@@ -122,6 +122,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
 
             }
         ));
+        tbl_Clientes.setEnabled(false);
         jScrollPane1.setViewportView(tbl_Clientes);
 
         btn_Agregar.setText("Agregar");

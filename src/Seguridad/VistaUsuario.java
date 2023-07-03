@@ -214,7 +214,12 @@ public class VistaUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_RClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RClienteActionPerformed
-        registroClientes.setVisible(true);
+        if (usuario.getEmpleado().getDepartamento().equals("Administrativo")
+                || usuario.getEmpleado().getDepartamento().equals("Mostrador")) {
+            registroClientes.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "No tiene permisos para acceder a esta opcion.");
+        }
     }//GEN-LAST:event_btn_RClienteActionPerformed
 
     private void btn_REmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_REmpleadoActionPerformed
@@ -234,7 +239,12 @@ public class VistaUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_RUsuarioActionPerformed
 
     private void btn_CVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CVueloActionPerformed
-        compraVuelo.setVisible(true);
+        if (usuario.getEmpleado().getDepartamento().equals("Administrativo")
+                || usuario.getEmpleado().getDepartamento().equals("Mostrador")) {
+            compraVuelo.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "No tiene permisos para acceder a esta opcion.");
+        }
     }//GEN-LAST:event_btn_CVueloActionPerformed
 
     private void btn_RVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RVueloActionPerformed

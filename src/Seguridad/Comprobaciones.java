@@ -147,11 +147,11 @@ public class Comprobaciones {
         }
     }
 
-    public Vuelo devolverVueloAeropuertos(String origen, String destino) {
+    public Vuelo devolverVueloAeropuertos(String destino, String origen) {
         List<Vuelo> vuelosCoincidentes = new ArrayList<>();
 
         for (Vuelo vuelo : ListaVuelo.getInstancia().getListaVuelos()) {
-            if (vuelo.getDestino().contains(origen) && vuelo.getOrigen().contains(destino)) {
+            if (vuelo.getDestino().contains(destino) && vuelo.getOrigen().contains(origen)) {
                 vuelosCoincidentes.add(vuelo);
             }
         }

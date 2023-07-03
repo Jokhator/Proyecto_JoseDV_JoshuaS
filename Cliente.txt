@@ -1,2 +1,2 @@
-1|1|21|1|1|1|1
-2|2|20|2|2|2|0
+1|Joshua|20|85346950|josh.gsm19@gmail.com|CRC|0
+2|Jose Dani|20|88888888|jdvc@gmail.com|CRC|0

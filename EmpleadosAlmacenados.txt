@@ -1,2 +1,4 @@
 Administrativo, Joshua
 Mostrador, Jose Daniel
+Piloto, James
+Copiloto, Copiloto

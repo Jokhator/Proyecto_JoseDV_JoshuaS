@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,10 +28,26 @@ public class ListasEmpleadosYClientes extends javax.swing.JFrame {
     DefaultTableModel modeloTabla;
     ListaEmpleado listaEmpleados = ListaEmpleado.getInstancia();
     ListaCliente listaCliente = ListaCliente.getInstancia();
+
     public ListasEmpleadosYClientes() {
         initComponents();
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                confirmarCierreVentana();
+            }
+        });
     }
-    
+
+    private void confirmarCierreVentana() {
+        // Aquí puedes mostrar un mensaje de confirmación y realizar acciones adicionales antes de cerrar la ventana
+        int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas cerrar la ventana?", "Confirmar cierre", javax.swing.JOptionPane.YES_NO_OPTION);
+        if (opcion == javax.swing.JOptionPane.YES_OPTION) {
+            dispose(); // Cerrar la ventana
+        }
+    }
+
     public void write(String txt, ArrayList<String> guardar) {
         String nombreArchivo = txt;
 
@@ -43,7 +60,7 @@ public class ListasEmpleadosYClientes extends javax.swing.JFrame {
             System.err.println("Error al guardar los clientes en el archivo " + nombreArchivo + ": " + e.getMessage());
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

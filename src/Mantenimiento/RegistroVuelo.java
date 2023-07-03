@@ -607,7 +607,7 @@ public class RegistroVuelo extends javax.swing.JFrame {
         String horaSalida = generarHoraAleatoria();
         String horaEntrada = generarHoraLlegada(horaSalida, fechaSalida, fechaEntrada);
         String idAvion = txt_idAvion.getText();
-        
+
         int capacidad = comporbaciones.esInt(txt_capacidad.getText());
         double costoPasaje = comporbaciones.esDouble(txt_costoBoleto.getText());
         double costoTotalAerolinea = comporbaciones.esDouble(txt_costoTotal.getText());
@@ -617,12 +617,15 @@ public class RegistroVuelo extends javax.swing.JFrame {
         if (comporbaciones.existeEmpleado(this, idPiloto) && comporbaciones.existeEmpleado(this, idCopiloto) && capacidad > 0 && costoPasaje > 0 && costoTotalAerolinea > 0) {
             piloto = comporbaciones.devolverEmpleado(this, idPiloto);
             copiloto = comporbaciones.devolverEmpleado(this, idCopiloto);
-
-            Vuelo vuelo = new Vuelo(idVuelo, piloto, copiloto, origen, destino, codAreopuertoSalida,
-                    codAeropuertoEntrada, fechaSalida, fechaEntrada, horaSalida, horaEntrada,
-                    idAvion, capacidad, costoPasaje, costoTotalAerolinea);
-
-            listaVuelos.getListaVuelos().add(vuelo);
+            Vuelo vuelo;
+            if (piloto.getDepartamento().equals("Piloto") && copiloto.getDepartamento().equals("Copiloto")) {
+                vuelo = new Vuelo(idVuelo, piloto, copiloto, origen, destino, codAreopuertoSalida,
+                        codAeropuertoEntrada, fechaSalida, fechaEntrada, horaSalida, horaEntrada,
+                        idAvion, capacidad, costoPasaje, costoTotalAerolinea);
+                listaVuelos.getListaVuelos().add(vuelo);
+            } else {
+                JOptionPane.showMessageDialog(this, "El piloto o copiloto no se encuentran en el departamento respectivo.");
+            }
         }
         btn_Mostrar.doClick();
         limpiarTxt();

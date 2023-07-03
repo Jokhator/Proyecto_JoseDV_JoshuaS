@@ -198,7 +198,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
             }
         });
 
-        cmb_Depatarmentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrativo", "Mostrador" }));
+        cmb_Depatarmentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrativo", "Mostrador", "Piloto", "Copiloto", "Sobrecargo" }));
         cmb_Depatarmentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_DepatarmentosActionPerformed(evt);

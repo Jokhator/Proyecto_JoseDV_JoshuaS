@@ -1,2 +1,4 @@
 1|Joshua|20|1|Administrativo|1.0|2/7/2023
 2|Jose Daniel|20|2|Mostrador|2.0|2/7/2023
+3|James|93|88888888|Piloto|10000.0|3/7/2023
+4|Copiloto|32|84569582|Copiloto|5.0|3/7/2023

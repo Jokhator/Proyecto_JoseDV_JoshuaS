@@ -284,9 +284,12 @@
         <Component class="javax.swing.JComboBox" name="cmb_Depatarmentos">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
+              <StringArray count="5">
                 <StringItem index="0" value="Administrativo"/>
                 <StringItem index="1" value="Mostrador"/>
+                <StringItem index="2" value="Piloto"/>
+                <StringItem index="3" value="Copiloto"/>
+                <StringItem index="4" value="Sobrecargo"/>
               </StringArray>
             </Property>
           </Properties>

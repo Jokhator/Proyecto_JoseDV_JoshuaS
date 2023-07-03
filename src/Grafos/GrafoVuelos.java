@@ -91,7 +91,6 @@ public class GrafoVuelos {
             }
         }
         if (!existe && listaVuelos.getListaVuelos().get(i).getOrigen().contains(ori)) {
-            System.out.println("ELPEPE");
             aeropuertos.add(listaVuelos.getListaVuelos().get(i).getOrigen());
         }
     }
@@ -107,7 +106,6 @@ public class GrafoVuelos {
         }
         if (!existe  && listaVuelos.getListaVuelos().get(i).getDestino().contains(dest)) {
             aeropuertos.add(listaVuelos.getListaVuelos().get(i).getDestino());
-            System.out.println("ETESECH");
         }
     }
         System.out.println(ori + ", " + dest);

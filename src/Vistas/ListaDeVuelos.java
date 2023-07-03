@@ -18,6 +18,7 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -37,6 +38,22 @@ public class ListaDeVuelos extends javax.swing.JFrame {
         initComponents();
         llenarComboBoxFechas(cmb_fechaMin);
         llenarComboBoxFechas(cmb_fechaMax);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                confirmarCierreVentana();
+            }
+        });
+    }
+
+    private void confirmarCierreVentana() {
+        // Aquí puedes mostrar un mensaje de confirmación y realizar acciones adicionales antes de cerrar la ventana
+        int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas cerrar la ventana?", "Confirmar cierre", javax.swing.JOptionPane.YES_NO_OPTION);
+        if (opcion == javax.swing.JOptionPane.YES_OPTION) {
+            eliminarDuplicados(precios);
+            dispose(); // Cerrar la ventana
+        }
     }
 
     /**
@@ -219,15 +236,15 @@ public class ListaDeVuelos extends javax.swing.JFrame {
             comboBox.addItem(fecha);
         }
     }
-    
+
     private void eliminarDuplicados(ArrayList<String> lista) {
         HashSet<String> conjunto = new HashSet<>(lista);
         lista.clear();
         lista.addAll(conjunto);
         write("PreciosDeVuelos.txt", lista);
     }
-    
-    public double promedio(){
+
+    public double promedio() {
         double total = 0;
         for (int i = 0; i < listaVuelos.getListaVuelos().size(); i++) {
             Vuelo get = listaVuelos.getListaVuelos().get(i);
@@ -237,7 +254,7 @@ public class ListaDeVuelos extends javax.swing.JFrame {
         precios.add("Promedio de costos: " + total);
         return total;
     }
-    
+
     public void write(String txt, ArrayList<String> guardar) {
         String nombreArchivo = txt;
 
@@ -250,7 +267,7 @@ public class ListaDeVuelos extends javax.swing.JFrame {
             System.err.println("Error al guardar los clientes en el archivo " + nombreArchivo + ": " + e.getMessage());
         }
     }
-        
+
     private void btn_vuelosDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vuelosDisponiblesActionPerformed
         // TODO add your handling code here:
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -283,7 +300,7 @@ public class ListaDeVuelos extends javax.swing.JFrame {
                     fila[4] = vuelo.getCodAreopuertoSalida();
                     fila[5] = vuelo.getCodAeropuertoEntrada();
                     modeloTabla.addRow(fila);
-                    vuelos.add(fila[0] + ", " + fila[1] + ", " +fila[2] + ", " +fila[3] + ", " +fila[4] + ", " +fila[5]);
+                    vuelos.add(fila[0] + ", " + fila[1] + ", " + fila[2] + ", " + fila[3] + ", " + fila[4] + ", " + fila[5]);
                 }
                 tbl_vuelos.setModel(modeloTabla);
                 modeloTabla.fireTableDataChanged();
@@ -302,40 +319,40 @@ public class ListaDeVuelos extends javax.swing.JFrame {
         // TODO add your handling code here:
         double prom = promedio();
         JOptionPane.showMessageDialog(this, "El promedio de costos de vuelos es: " + prom);
-        
+
     }//GEN-LAST:event_btn_promedioActionPerformed
 
     private void btn_baratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_baratoActionPerformed
         // TODO add your handling code here:
-        if(!listaVuelos.getListaVuelos().isEmpty()){
-        Vuelo barato = listaVuelos.getListaVuelos().get(0);
-        for (Vuelo vuelo : listaVuelos.getListaVuelos()) {
-            if(vuelo.getCostoTotalAerolinea()< barato.getCostoTotalAerolinea()){
-                barato = vuelo;
+        if (!listaVuelos.getListaVuelos().isEmpty()) {
+            Vuelo barato = listaVuelos.getListaVuelos().get(0);
+            for (Vuelo vuelo : listaVuelos.getListaVuelos()) {
+                if (vuelo.getCostoTotalAerolinea() < barato.getCostoTotalAerolinea()) {
+                    barato = vuelo;
+                }
             }
-        }
-        precios.add("Vuelo de menor precio: " + barato.toString());
-        JOptionPane.showMessageDialog(this, "El vuelo de menor precio cuesta: " + barato.getCostoTotalAerolinea() + "\n ID vuelo: " + barato.getIdVuelo() + ", fecha salida: " + barato.getFechaSalida() + ", costo total: " + barato.getCostoTotalAerolinea());
+            precios.add("Vuelo de menor precio: " + barato.toString());
+            JOptionPane.showMessageDialog(this, "El vuelo de menor precio cuesta: " + barato.getCostoTotalAerolinea() + "\n ID vuelo: " + barato.getIdVuelo() + ", fecha salida: " + barato.getFechaSalida() + ", costo total: " + barato.getCostoTotalAerolinea());
         }
     }//GEN-LAST:event_btn_baratoActionPerformed
 
     private void btn_caroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_caroActionPerformed
         // TODO add your handling code here:
-        if(!listaVuelos.getListaVuelos().isEmpty()){
-        Vuelo caro = listaVuelos.getListaVuelos().get(0);
-        for (Vuelo vuelo : listaVuelos.getListaVuelos()) {
-            if(vuelo.getCostoTotalAerolinea() > caro.getCostoTotalAerolinea()){
-                caro = vuelo;
+        if (!listaVuelos.getListaVuelos().isEmpty()) {
+            Vuelo caro = listaVuelos.getListaVuelos().get(0);
+            for (Vuelo vuelo : listaVuelos.getListaVuelos()) {
+                if (vuelo.getCostoTotalAerolinea() > caro.getCostoTotalAerolinea()) {
+                    caro = vuelo;
+                }
             }
-        }
-        precios.add("Vuelo de mayor precio: " + caro.toString());
-        JOptionPane.showMessageDialog(this, "El vuelo de mayor precio cuesta: " + caro.getCostoTotalAerolinea() + "\n ID vuelo: " + caro.getIdVuelo() + ", fecha salida: " + caro.getFechaSalida() + ", costo total: " + caro.getCostoTotalAerolinea());
+            precios.add("Vuelo de mayor precio: " + caro.toString());
+            JOptionPane.showMessageDialog(this, "El vuelo de mayor precio cuesta: " + caro.getCostoTotalAerolinea() + "\n ID vuelo: " + caro.getIdVuelo() + ", fecha salida: " + caro.getFechaSalida() + ", costo total: " + caro.getCostoTotalAerolinea());
         }
     }//GEN-LAST:event_btn_caroActionPerformed
 
     /**
-         * @param args the command line arguments
-         */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

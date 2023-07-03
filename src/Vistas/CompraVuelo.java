@@ -5,9 +5,16 @@
 package Vistas;
 
 import Grafos.GrafoVuelos;
-import Listas.ListaCliente;
+import SampleClasses.Vuelo;
 import javax.swing.JOptionPane;
 import Seguridad.Comprobaciones;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.swing.WindowConstants;
 
 /**
@@ -15,15 +22,13 @@ import javax.swing.WindowConstants;
  * @author jdvc, jgsm
  */
 public class CompraVuelo extends javax.swing.JFrame {
-
-    ListaCliente listaClientes = ListaCliente.getInstancia();
+    
     Comprobaciones comprobaciones = new Comprobaciones();
-
-    /**
-     * Creates new form CompraVuelo
-     */
+    ArrayList<String> listaVuelosReservados = new ArrayList<String>();
+    
     public CompraVuelo() {
         initComponents();
+        cargarClientesDesdeArchivo();
         cmbCantidad();
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -33,11 +38,12 @@ public class CompraVuelo extends javax.swing.JFrame {
             }
         });
     }
-
+    
     private void confirmarCierreVentana() {
         // Aquí puedes mostrar un mensaje de confirmación y realizar acciones adicionales antes de cerrar la ventana
         int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas cerrar la ventana?", "Confirmar cierre", javax.swing.JOptionPane.YES_NO_OPTION);
         if (opcion == javax.swing.JOptionPane.YES_OPTION) {
+            write("VuelosReservados.txt", listaVuelosReservados);
             dispose(); // Cerrar la ventana
         }
     }
@@ -46,7 +52,7 @@ public class CompraVuelo extends javax.swing.JFrame {
         for (int i = 0; i <= 99; i++) {
             String num = String.valueOf(i);
             cmb_Espacios.addItem(num);
-
+            
         }
     }
 
@@ -68,10 +74,9 @@ public class CompraVuelo extends javax.swing.JFrame {
         txt_PaisOrigen = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txt_PaisDestino = new javax.swing.JTextField();
-        btn_MostrarVuelos = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_Empleados = new javax.swing.JTable();
+        btn_ReservarVuelo = new javax.swing.JButton();
         cmb_Espacios = new javax.swing.JComboBox<>();
+        btn_MostrarVuelos1 = new javax.swing.JButton();
 
         jLabel4.setText("Pais destino:");
 
@@ -106,23 +111,19 @@ public class CompraVuelo extends javax.swing.JFrame {
             }
         });
 
-        btn_MostrarVuelos.setText("Mostrar vuelos disponibles");
-        btn_MostrarVuelos.addActionListener(new java.awt.event.ActionListener() {
+        btn_ReservarVuelo.setText("Reservar vuelo");
+        btn_ReservarVuelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_MostrarVuelosActionPerformed(evt);
+                btn_ReservarVueloActionPerformed(evt);
             }
         });
 
-        tbl_Empleados.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
+        btn_MostrarVuelos1.setText("Mostrar vuelos disponibles");
+        btn_MostrarVuelos1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_MostrarVuelos1ActionPerformed(evt);
             }
-        ));
-        tbl_Empleados.setEnabled(false);
-        jScrollPane1.setViewportView(tbl_Empleados);
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -130,30 +131,26 @@ public class CompraVuelo extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_Pasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_Pasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_PaisOrigen, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(txt_PaisDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(cmb_Espacios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_MostrarVuelos)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_PaisOrigen, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(txt_PaisDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(cmb_Espacios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_ReservarVuelo, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_MostrarVuelos1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,11 +159,12 @@ public class CompraVuelo extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txt_Pasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_MostrarVuelos))
+                    .addComponent(btn_MostrarVuelos1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txt_PaisOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_PaisOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_ReservarVuelo))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -175,9 +173,7 @@ public class CompraVuelo extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(cmb_Espacios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -193,8 +189,8 @@ public class CompraVuelo extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -212,7 +208,20 @@ public class CompraVuelo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_PaisDestinoActionPerformed
 
-    private void btn_MostrarVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MostrarVuelosActionPerformed
+    private void btn_ReservarVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ReservarVueloActionPerformed
+        Vuelo vuelo = comprobaciones.devolverVueloAeropuertos(txt_PaisDestino.getText(), txt_PaisOrigen.getText());
+        if (vuelo.getCapacidad() > Integer.parseInt(String.valueOf(cmb_Espacios.getSelectedItem()))) {
+            vuelo.setCapacidad(vuelo.getCapacidad() - Integer.parseInt(String.valueOf(cmb_Espacios.getSelectedItem())));
+            listaVuelosReservados.add(txt_Pasaporte.getText() + "|" + txt_PaisOrigen.getText()
+                    + "|" + txt_PaisDestino.getText() + "|" + String.valueOf(cmb_Espacios.getSelectedItem()));
+            JOptionPane.showMessageDialog(this, "Vuelo reservado correctamente.");
+        } else {
+            JOptionPane.showMessageDialog(this, "La cantidad de acompañantes seleccionada excede la capacidad del vuelo.");
+        }
+
+    }//GEN-LAST:event_btn_ReservarVueloActionPerformed
+
+    private void btn_MostrarVuelos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MostrarVuelos1ActionPerformed
         GrafoVuelos grafo = new GrafoVuelos();
         if (comprobaciones.existeCliente(this, txt_Pasaporte.getText())) {
             grafo.grafo(txt_PaisOrigen.getText(), txt_PaisDestino.getText(), Integer.parseInt(String.valueOf(cmb_Espacios.getSelectedItem())));
@@ -221,7 +230,7 @@ public class CompraVuelo extends javax.swing.JFrame {
                     + "Favor Digitar un pasaporte valido para proceder con la busqueda de vuelos disponibles.");
             txt_Pasaporte.setText("");
         }
-    }//GEN-LAST:event_btn_MostrarVuelosActionPerformed
+    }//GEN-LAST:event_btn_MostrarVuelos1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,9 +266,42 @@ public class CompraVuelo extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void write(String txt, ArrayList<String> guardar) {
+        String nombreArchivo = txt;
+        
+        try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(nombreArchivo, false)))) {
+            for (String s : guardar) {
+                out.println(s);
+            }
+            System.out.println("Los vuelos se han guardado correctamente en el archivo " + nombreArchivo);
+        } catch (IOException e) {
+            System.err.println("Error al guardar los clientes en el archivo " + nombreArchivo + ": " + e.getMessage());
+        }
+    }
+    
+    private void cargarClientesDesdeArchivo() {
+        String nombreArchivo = "VuelosReservados.txt";
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] partes = linea.split("\\|");
+                if (partes.length == 4) {
+                    String vueloReservado = "";
+                    vueloReservado += partes[0] + "|" + partes[1] + "|" + partes[2] + "|" + partes[3];
+                    listaVuelosReservados.add(vueloReservado);
+                }
+            }
+            System.out.println("Se han cargado " + listaVuelosReservados.size() + " vuelos desde el archivo " + nombreArchivo);
+        } catch (IOException e) {
+            System.err.println("Error al cargar los vuelos desde el archivo " + nombreArchivo + ": " + e.getMessage());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btn_MostrarVuelos;
+    public javax.swing.JButton btn_MostrarVuelos1;
+    public javax.swing.JButton btn_ReservarVuelo;
     private javax.swing.JComboBox<String> cmb_Espacios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -267,8 +309,6 @@ public class CompraVuelo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbl_Empleados;
     public javax.swing.JTextField txt_PaisDestino;
     public javax.swing.JTextField txt_PaisOrigen;
     public javax.swing.JTextField txt_Pasaporte;

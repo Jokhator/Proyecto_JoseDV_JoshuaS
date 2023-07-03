@@ -24,6 +24,7 @@ public class CompraVuelo extends javax.swing.JFrame {
      */
     public CompraVuelo() {
         initComponents();
+        cmbCantidad();
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -38,6 +39,14 @@ public class CompraVuelo extends javax.swing.JFrame {
         int opcion = javax.swing.JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas cerrar la ventana?", "Confirmar cierre", javax.swing.JOptionPane.YES_NO_OPTION);
         if (opcion == javax.swing.JOptionPane.YES_OPTION) {
             dispose(); // Cerrar la ventana
+        }
+    }
+    
+    public void cmbCantidad() {
+        for (int i = 0; i <= 99; i++) {
+            String num = String.valueOf(i);
+            cmb_Espacios.addItem(num);
+
         }
     }
 
@@ -55,7 +64,6 @@ public class CompraVuelo extends javax.swing.JFrame {
         txt_Pasaporte = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txt_Cantidad = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txt_PaisOrigen = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -63,6 +71,7 @@ public class CompraVuelo extends javax.swing.JFrame {
         btn_MostrarVuelos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_Empleados = new javax.swing.JTable();
+        cmb_Espacios = new javax.swing.JComboBox<>();
 
         jLabel4.setText("Pais destino:");
 
@@ -78,13 +87,6 @@ public class CompraVuelo extends javax.swing.JFrame {
         jLabel2.setText("Pais origen:");
 
         jLabel3.setText("Pais destino:");
-
-        txt_Cantidad.setToolTipText("");
-        txt_Cantidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_CantidadActionPerformed(evt);
-            }
-        });
 
         jLabel1.setText("Pasaporte del cliente:");
 
@@ -141,10 +143,10 @@ public class CompraVuelo extends javax.swing.JFrame {
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel5))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_PaisOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_PaisDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_PaisOrigen, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(txt_PaisDestino, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(cmb_Espacios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_MostrarVuelos)
                         .addContainerGap())
@@ -172,7 +174,7 @@ public class CompraVuelo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txt_Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmb_Espacios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -202,10 +204,6 @@ public class CompraVuelo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_PasaporteActionPerformed
 
-    private void txt_CantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_CantidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_CantidadActionPerformed
-
     private void txt_PaisOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_PaisOrigenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_PaisOrigenActionPerformed
@@ -217,7 +215,7 @@ public class CompraVuelo extends javax.swing.JFrame {
     private void btn_MostrarVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MostrarVuelosActionPerformed
         GrafoVuelos grafo = new GrafoVuelos();
         if (comprobaciones.existeCliente(this, txt_Pasaporte.getText())) {
-            grafo.grafo(txt_PaisOrigen.getText(), txt_PaisDestino.getText());
+            grafo.grafo(txt_PaisOrigen.getText(), txt_PaisDestino.getText(), Integer.parseInt(String.valueOf(cmb_Espacios.getSelectedItem())));
         } else {
             JOptionPane.showMessageDialog(this, "El pasaporte digitado no coincide con ningun cliente registrado en el sistema.\n"
                     + "Favor Digitar un pasaporte valido para proceder con la busqueda de vuelos disponibles.");
@@ -262,6 +260,7 @@ public class CompraVuelo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_MostrarVuelos;
+    private javax.swing.JComboBox<String> cmb_Espacios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -270,7 +269,6 @@ public class CompraVuelo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbl_Empleados;
-    public javax.swing.JTextField txt_Cantidad;
     public javax.swing.JTextField txt_PaisDestino;
     public javax.swing.JTextField txt_PaisOrigen;
     public javax.swing.JTextField txt_Pasaporte;

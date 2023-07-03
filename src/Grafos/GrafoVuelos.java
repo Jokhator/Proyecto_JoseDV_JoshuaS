@@ -21,7 +21,7 @@ public class GrafoVuelos {
     
     static ArrayList<String> aeropuertos = new ArrayList<>();
     
-    public void grafo(String origen, String destino) {
+    public void grafo(String origen, String destino, int espacios) {
         Comprobaciones comprobaciones = new Comprobaciones();
         ArrayList<Double> precios = new ArrayList<>();
         double matrizA[][];
@@ -42,7 +42,7 @@ public class GrafoVuelos {
                     String aer2 = aeropuertos.get(i);
                     //recorrer lista vuelos, buscando un vuelo que tenga los 2 aeropuertos que coincidad y si lo hacen, se le ponde un precio
                     if (comprobaciones.existenAeropuertos(aer1, aer2)) {
-                        if(comprobaciones.devolverVueloAeropuertos(aer1, aer2).getCapacidad() > 0){
+                        if(comprobaciones.devolverVueloAeropuertos(aer1, aer2).getCapacidad() > espacios){
                         matrizA[i][j] = comprobaciones.devolverVueloAeropuertos(aer1, aer2).getCostoPasaje();
                         }
                     } else {

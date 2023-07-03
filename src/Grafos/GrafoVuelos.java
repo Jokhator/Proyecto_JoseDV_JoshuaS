@@ -5,7 +5,7 @@
 package Grafos;
 
 /**
- * @author Jose Daniel Vargas C
+ * @author jdvc, jgsm
  * @time 4:20:51 PM
  * @date Jun 28, 2023
  */

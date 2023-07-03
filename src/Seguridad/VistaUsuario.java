@@ -4,25 +4,31 @@
  */
 package Seguridad;
 
-import YOCHUAS.CompraVuelo;
+import Vistas.CompraVuelo;
 import Mantenimiento.RegistroCliente;
 import Mantenimiento.RegistroEmpleado;
 import Mantenimiento.RegistroUsuario;
 import Mantenimiento.RegistroVuelo;
 import SampleClasses.Usuario;
 import javax.swing.JOptionPane;
+import Vistas.ListaDeVuelos;
+import Vistas.ListasEmpleadosYClientes;
+import Seguridad.Compresion;
 
 /**
  *
  * @author Joshu
  */
 public class VistaUsuario extends javax.swing.JFrame {
-    
+
     RegistroCliente registroClientes = new RegistroCliente();
     RegistroEmpleado registroEmpleados = new RegistroEmpleado();
     RegistroUsuario registroUsuarios = new RegistroUsuario();
     RegistroVuelo registroVuelos = new RegistroVuelo();
     CompraVuelo compraVuelo = new CompraVuelo();
+    ListaDeVuelos listaDeVuelos = new ListaDeVuelos();
+    ListasEmpleadosYClientes listaEmpleadosYClientes = new ListasEmpleadosYClientes();
+    Compresion compresion = new Compresion();
     Usuario usuario;
 
     /**
@@ -30,7 +36,7 @@ public class VistaUsuario extends javax.swing.JFrame {
      */
     public VistaUsuario() {
         initComponents();
-        
+
     }
 
     public VistaUsuario(Usuario usuario) {
@@ -55,6 +61,9 @@ public class VistaUsuario extends javax.swing.JFrame {
         btn_CVuelo = new javax.swing.JButton();
         label_Bienvenida = new javax.swing.JLabel();
         btn_RVuelo = new javax.swing.JButton();
+        btn_ListaVuelos = new javax.swing.JButton();
+        btn_ListaClientes = new javax.swing.JButton();
+        btn_Zip = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -102,29 +111,63 @@ public class VistaUsuario extends javax.swing.JFrame {
             }
         });
 
+        btn_ListaVuelos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btn_ListaVuelos.setText("Vuelos disponibles");
+        btn_ListaVuelos.setToolTipText("");
+        btn_ListaVuelos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ListaVuelosActionPerformed(evt);
+            }
+        });
+
+        btn_ListaClientes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btn_ListaClientes.setText("Lista de empleados y clientes");
+        btn_ListaClientes.setToolTipText("");
+        btn_ListaClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ListaClientesActionPerformed(evt);
+            }
+        });
+
+        btn_Zip.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btn_Zip.setText("Crear zip");
+        btn_Zip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ZipActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(label_Bienvenida))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btn_RCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_REmpleado))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btn_RVuelo, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_RUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(btn_CVuelo, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(81, 81, 81)
+                .addComponent(label_Bienvenida)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btn_RCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_REmpleado))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btn_RVuelo, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_RUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 5, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btn_ListaClientes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_Zip))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btn_CVuelo, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_ListaVuelos, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,8 +183,14 @@ public class VistaUsuario extends javax.swing.JFrame {
                     .addComponent(btn_RUsuario)
                     .addComponent(btn_RVuelo))
                 .addGap(18, 18, 18)
-                .addComponent(btn_CVuelo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_CVuelo)
+                    .addComponent(btn_ListaVuelos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_ListaClientes)
+                    .addComponent(btn_Zip))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -196,6 +245,30 @@ public class VistaUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_RVueloActionPerformed
 
+    private void btn_ListaVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ListaVuelosActionPerformed
+        if (usuario.getEmpleado().getDepartamento().equals("Administrativo")) {
+            listaDeVuelos.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "No tiene permisos para acceder a esta opcion.");
+        }
+    }//GEN-LAST:event_btn_ListaVuelosActionPerformed
+
+    private void btn_ListaClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ListaClientesActionPerformed
+        if (usuario.getEmpleado().getDepartamento().equals("Administrativo")) {
+            listaEmpleadosYClientes.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "No tiene permisos para acceder a esta opcion.");
+        }
+    }//GEN-LAST:event_btn_ListaClientesActionPerformed
+
+    private void btn_ZipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ZipActionPerformed
+        if (usuario.getEmpleado().getDepartamento().equals("Administrativo")) {
+            compresion.run();
+        } else {
+            JOptionPane.showMessageDialog(this, "No tiene permisos para acceder a esta opcion.");
+        }
+    }//GEN-LAST:event_btn_ZipActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -233,10 +306,13 @@ public class VistaUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_CVuelo;
+    private javax.swing.JButton btn_ListaClientes;
+    private javax.swing.JButton btn_ListaVuelos;
     private javax.swing.JButton btn_RCliente;
     private javax.swing.JButton btn_REmpleado;
     private javax.swing.JButton btn_RUsuario;
     private javax.swing.JButton btn_RVuelo;
+    private javax.swing.JButton btn_Zip;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel label_Bienvenida;
     // End of variables declaration//GEN-END:variables

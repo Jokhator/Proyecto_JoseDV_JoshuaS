@@ -2,13 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package YOCHUAS;
+package Vistas;
 
 import Listas.ListaCliente;
 import Listas.ListaEmpleado;
 import SampleClasses.Cliente;
 import SampleClasses.Empleado;
-import SampleClasses.Usuario;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author jdvcb
+ * @author jdvc, jgsm
  */
 public class ListasEmpleadosYClientes extends javax.swing.JFrame {
 
@@ -59,9 +58,8 @@ public class ListasEmpleadosYClientes extends javax.swing.JFrame {
         btn_clientes = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_josua = new javax.swing.JTable();
-        bts_zip = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(252, 14, 197));
 
@@ -90,13 +88,6 @@ public class ListasEmpleadosYClientes extends javax.swing.JFrame {
         tbl_josua.setEnabled(false);
         jScrollPane1.setViewportView(tbl_josua);
 
-        bts_zip.setText("Zip");
-        bts_zip.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bts_zipActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -106,27 +97,20 @@ public class ListasEmpleadosYClientes extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btn_clientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btn_empleados)))
-                        .addGap(482, 482, 482)
-                        .addComponent(bts_zip, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addGap(545, 545, 545))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(btn_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(bts_zip)))
+                .addGap(26, 26, 26)
+                .addComponent(btn_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addComponent(btn_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -167,10 +151,6 @@ public class ListasEmpleadosYClientes extends javax.swing.JFrame {
         tbl_josua.setModel(modeloTabla);
         modeloTabla.fireTableDataChanged();
     }//GEN-LAST:event_btn_empleadosActionPerformed
-
-    private void bts_zipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bts_zipActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bts_zipActionPerformed
 
     private void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
         // TODO add your handling code here:
@@ -232,7 +212,6 @@ public class ListasEmpleadosYClientes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_clientes;
     private javax.swing.JButton btn_empleados;
-    private javax.swing.JButton bts_zip;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbl_josua;

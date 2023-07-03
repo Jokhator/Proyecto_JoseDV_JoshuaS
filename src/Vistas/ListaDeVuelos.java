@@ -2,10 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package YOCHUAS;
+package Vistas;
 
 import Listas.ListaVuelo;
-import SampleClasses.Cliente;
 import java.util.HashSet;
 import SampleClasses.Vuelo;
 import java.io.BufferedWriter;
@@ -23,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author jdvcb
+ * @author jdvc, jgsm
  */
 public class ListaDeVuelos extends javax.swing.JFrame {
 
@@ -61,7 +60,7 @@ public class ListaDeVuelos extends javax.swing.JFrame {
         cmb_fechaMin = new javax.swing.JComboBox<>();
         cmb_fechaMax = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 200, 221));
 

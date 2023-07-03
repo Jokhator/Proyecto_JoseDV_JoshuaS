@@ -5,10 +5,8 @@
 
 package Grafos;
 
-import java.util.ArrayList;
-
 /**
- * @author Jose Daniel Vargas C
+ * @author jdvc, jgsm
  * @time 4:20:05 PM
  * @date Jun 28, 2023
  */

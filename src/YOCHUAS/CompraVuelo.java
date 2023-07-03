@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Compra;
+package YOCHUAS;
 
+import Grafos.GrafoVuelos;
 import Listas.ListaCliente;
 import javax.swing.JOptionPane;
 import Seguridad.Comprobaciones;
@@ -214,8 +215,9 @@ public class CompraVuelo extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_PaisDestinoActionPerformed
 
     private void btn_MostrarVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MostrarVuelosActionPerformed
+        GrafoVuelos grafo = new GrafoVuelos();
         if (comprobaciones.existeCliente(this, txt_Pasaporte.getText())) {
-
+            grafo.grafo();
         } else {
             JOptionPane.showMessageDialog(this, "El pasaporte digitado no coincide con ningun cliente registrado en el sistema.\n"
                     + "Favor Digitar un pasaporte valido para proceder con la busqueda de vuelos disponibles.");

@@ -17,11 +17,11 @@ import Seguridad.Comprobaciones;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 
-public class Main {
+public class GrafoVuelos {
     
     static ArrayList<String> aeropuertos = new ArrayList<>();
     
-    public static void main(String[] args) {
+    public void grafo() {
         Comprobaciones comprobaciones = new Comprobaciones();
         ArrayList<Double> precios = new ArrayList<>();
         double matrizA[][];
@@ -57,7 +57,7 @@ public class Main {
         JOptionPane.showMessageDialog(null, ruta.algoritmoFloyd(matrizA));
     }
     
-    public static int convertirAEntero(String cadena) {
+    public int convertirAEntero(String cadena) {
         if (esNumero(cadena)) {
             return Integer.parseInt(cadena);
         } else {
@@ -66,7 +66,7 @@ public class Main {
         }
     }
     
-    public static boolean esNumero(String cadena) {
+    public boolean esNumero(String cadena) {
         for (int i = 0; i < cadena.length(); i++) {
             if (!Character.isDigit(cadena.charAt(i))) {
                 return false;
@@ -75,7 +75,7 @@ public class Main {
         return true;
     }
     
-    public static void matrix() {
+    public void matrix() {
     ListaVuelo listaVuelos = ListaVuelo.getInstancia();
     for (int i = 0; i < listaVuelos.getListaVuelos().size(); i++) {
         boolean existe = false;
@@ -106,7 +106,7 @@ public class Main {
     }
 }
 
-    public static void ordenarListas(ArrayList<Double>[][] matriz) {
+    public void ordenarListas(ArrayList<Double>[][] matriz) {
     int filas = matriz.length;
     int columnas = matriz[0].length;
 
@@ -129,7 +129,7 @@ public class Main {
 }
 
     
-    public static ArrayList<Double>[][] crearMatriz(int filas, int columnas) {
+    public ArrayList<Double>[][] crearMatriz(int filas, int columnas) {
         ArrayList<Double>[][] matriz = new ArrayList[filas][columnas];
 
         for (int i = 0; i < filas; i++) {

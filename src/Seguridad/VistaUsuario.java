@@ -4,7 +4,7 @@
  */
 package Seguridad;
 
-import Compra.CompraVuelo;
+import YOCHUAS.CompraVuelo;
 import Mantenimiento.RegistroCliente;
 import Mantenimiento.RegistroEmpleado;
 import Mantenimiento.RegistroUsuario;

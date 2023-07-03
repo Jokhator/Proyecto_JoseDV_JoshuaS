@@ -46,7 +46,7 @@ public class ListaCliente {
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] partes = linea.split("\\|");
-                if (partes.length == 6) { // Asegurar que se tengan los 7 atributos
+                if (partes.length == 7) { // Asegurar que se tengan los 7 atributos
                     Cliente cliente = new Cliente();
                     cliente.setPasaporte(partes[0]);
                     cliente.setNombre(partes[1]);
@@ -54,6 +54,7 @@ public class ListaCliente {
                     cliente.setTelefono(Integer.parseInt(partes[3]));
                     cliente.setCorreo(partes[4]);
                     cliente.setNacionalidad(partes[5]);
+                    cliente.setVuelosComprados(Integer.parseInt(partes[6]));
                     listaClientes.add(cliente);
                 }
             }

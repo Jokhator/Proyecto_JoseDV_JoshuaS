@@ -5,9 +5,16 @@
 package YOCHUAS;
 
 import Listas.ListaVuelo;
+import SampleClasses.Cliente;
+import java.util.HashSet;
 import SampleClasses.Vuelo;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JComboBox;
@@ -25,6 +32,7 @@ public class ListaDeVuelos extends javax.swing.JFrame {
      */
     ListaVuelo listaVuelos = ListaVuelo.getInstancia();
     DefaultTableModel modeloTabla;
+    ArrayList<String> precios = new ArrayList<>();
 
     public ListaDeVuelos() {
         initComponents();
@@ -213,6 +221,13 @@ public class ListaDeVuelos extends javax.swing.JFrame {
         }
     }
     
+    private void eliminarDuplicados(ArrayList<String> lista) {
+        HashSet<String> conjunto = new HashSet<>(lista);
+        lista.clear();
+        lista.addAll(conjunto);
+        write("PreciosDeVuelos.txt", lista);
+    }
+    
     public double promedio(){
         double total = 0;
         for (int i = 0; i < listaVuelos.getListaVuelos().size(); i++) {
@@ -220,14 +235,27 @@ public class ListaDeVuelos extends javax.swing.JFrame {
             total += get.getCostoTotalAerolinea();
         }
         total = total / listaVuelos.getListaVuelos().size();
-        
+        precios.add("Promedio de costos: " + total);
         return total;
+    }
+    
+    public void write(String txt, ArrayList<String> guardar) {
+        String nombreArchivo = txt;
+
+        try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(nombreArchivo, false)))) {
+            for (String s : guardar) {
+                out.println(s);
+            }
+            System.out.println("Los clientes se han guardado correctamente en el archivo " + nombreArchivo);
+        } catch (IOException e) {
+            System.err.println("Error al guardar los clientes en el archivo " + nombreArchivo + ": " + e.getMessage());
+        }
     }
         
     private void btn_vuelosDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vuelosDisponiblesActionPerformed
         // TODO add your handling code here:
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        
+        ArrayList<String> vuelos = new ArrayList<>();
         modeloTabla = new DefaultTableModel();
         modeloTabla.addColumn("IdVuelo");
         modeloTabla.addColumn("Nombre Piloto");
@@ -256,6 +284,7 @@ public class ListaDeVuelos extends javax.swing.JFrame {
                     fila[4] = vuelo.getCodAreopuertoSalida();
                     fila[5] = vuelo.getCodAeropuertoEntrada();
                     modeloTabla.addRow(fila);
+                    vuelos.add(fila[0] + ", " + fila[1] + ", " +fila[2] + ", " +fila[3] + ", " +fila[4] + ", " +fila[5]);
                 }
                 tbl_vuelos.setModel(modeloTabla);
                 modeloTabla.fireTableDataChanged();
@@ -263,6 +292,7 @@ public class ListaDeVuelos extends javax.swing.JFrame {
                 System.out.println("Error al analizar las fechas.");
             }
         }
+        write("VuelosSolicitados.txt", vuelos);
     }//GEN-LAST:event_btn_vuelosDisponiblesActionPerformed
 
     private void cmb_fechaMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_fechaMinActionPerformed
@@ -285,6 +315,7 @@ public class ListaDeVuelos extends javax.swing.JFrame {
                 barato = vuelo;
             }
         }
+        precios.add("Vuelo de menor precio: " + barato.toString());
         JOptionPane.showMessageDialog(this, "El vuelo de menor precio cuesta: " + barato.getCostoTotalAerolinea() + "\n ID vuelo: " + barato.getIdVuelo() + ", fecha salida: " + barato.getFechaSalida() + ", costo total: " + barato.getCostoTotalAerolinea());
         }
     }//GEN-LAST:event_btn_baratoActionPerformed
@@ -298,6 +329,7 @@ public class ListaDeVuelos extends javax.swing.JFrame {
                 caro = vuelo;
             }
         }
+        precios.add("Vuelo de mayor precio: " + caro.toString());
         JOptionPane.showMessageDialog(this, "El vuelo de mayor precio cuesta: " + caro.getCostoTotalAerolinea() + "\n ID vuelo: " + caro.getIdVuelo() + ", fecha salida: " + caro.getFechaSalida() + ", costo total: " + caro.getCostoTotalAerolinea());
         }
     }//GEN-LAST:event_btn_caroActionPerformed

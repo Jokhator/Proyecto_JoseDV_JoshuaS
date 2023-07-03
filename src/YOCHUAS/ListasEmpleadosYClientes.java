@@ -9,6 +9,11 @@ import Listas.ListaEmpleado;
 import SampleClasses.Cliente;
 import SampleClasses.Empleado;
 import SampleClasses.Usuario;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,7 +31,20 @@ public class ListasEmpleadosYClientes extends javax.swing.JFrame {
     public ListasEmpleadosYClientes() {
         initComponents();
     }
+    
+    public void write(String txt, ArrayList<String> guardar) {
+        String nombreArchivo = txt;
 
+        try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(nombreArchivo, false)))) {
+            for (String s : guardar) {
+                out.println(s);
+            }
+            System.out.println("Los clientes se han guardado correctamente en el archivo " + nombreArchivo);
+        } catch (IOException e) {
+            System.err.println("Error al guardar los clientes en el archivo " + nombreArchivo + ": " + e.getMessage());
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -132,6 +150,7 @@ public class ListasEmpleadosYClientes extends javax.swing.JFrame {
 
     private void btn_empleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_empleadosActionPerformed
         // TODO add your handling code here:
+        ArrayList<String> empleados = new ArrayList<>();
         modeloTabla = new DefaultTableModel();
         modeloTabla.addColumn("Departamento");
         modeloTabla.addColumn("Nombre");
@@ -141,10 +160,10 @@ public class ListasEmpleadosYClientes extends javax.swing.JFrame {
 
             fila[0] = empleado.getDepartamento();
             fila[1] = empleado.getNom();
-
+            empleados.add(fila[0] + ", " + fila[1]);
             modeloTabla.addRow(fila); // Agrega la fila al modelo de tabla
         }
-
+        write("EmpleadosAlmacenados.txt", empleados);
         tbl_josua.setModel(modeloTabla);
         modeloTabla.fireTableDataChanged();
     }//GEN-LAST:event_btn_empleadosActionPerformed
@@ -155,6 +174,7 @@ public class ListasEmpleadosYClientes extends javax.swing.JFrame {
 
     private void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
         // TODO add your handling code here:
+        ArrayList<String> clientes = new ArrayList<>();
         modeloTabla = new DefaultTableModel();
         modeloTabla.addColumn("Nombre");
         modeloTabla.addColumn("Nacionalidad");
@@ -166,10 +186,10 @@ public class ListasEmpleadosYClientes extends javax.swing.JFrame {
             fila[0] = cliente.getNombre();
             fila[1] = cliente.getNacionalidad();
             fila[2] = cliente.getVuelosComprados();
-
+            clientes.add(fila[0] + ", " + fila[1] + fila[2]);
             modeloTabla.addRow(fila); // Agrega la fila al modelo de tabla
         }
-
+        write("ClientesAlmacenados.txt", clientes);
         tbl_josua.setModel(modeloTabla);
         modeloTabla.fireTableDataChanged();
     }//GEN-LAST:event_btn_clientesActionPerformed

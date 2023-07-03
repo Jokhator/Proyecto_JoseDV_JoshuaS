@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import Listas.ListaEmpleado;
 import Listas.ListaUsuario;
 import Listas.ListaVuelo;
+import SampleClasses.Cliente;
 import SampleClasses.Usuario;
 import SampleClasses.Vuelo;
 import java.util.ArrayList;
@@ -95,6 +96,29 @@ public class Comprobaciones {
             }
         }
     }
+    
+    public Cliente devolverCliente(javax.swing.JFrame form, String pasaporte) {
+        Cliente cliente = null;
+        if (ListaCliente.getInstancia().getListaClientes().isEmpty()) {
+            return null;
+        } else {
+            int cont = 0;
+            for (int i = 0; i < ListaCliente.getInstancia().getListaClientes().size(); i++) {
+                if (!ListaCliente.getInstancia().getListaClientes().get(i).getPasaporte().equals(pasaporte)) {
+                    
+                    cont++;
+                }else {
+                    cliente = ListaCliente.getInstancia().getListaClientes().get(i);
+                }
+            }
+            if (cont == ListaCliente.getInstancia().getListaClientes().size()) {
+                return null;
+            } else {
+                JOptionPane.showMessageDialog(form, "Cliente encontrado.");
+                return cliente;
+            }
+        }
+    }
 
     public boolean existeUsuario(javax.swing.JFrame form, String username) {
         if (ListaUsuario.getInstancia().getListaUsuarios().isEmpty()) {
@@ -110,12 +134,12 @@ public class Comprobaciones {
         }
     }
 
-    public boolean existenAeropuertos(String idAeropEntrada, String idAeropSalida) {
+    public boolean existenAeropuertos(String origen, String destino) {
         if (ListaVuelo.getInstancia().getListaVuelos().isEmpty()) {
             return false;
         } else {
             for (Vuelo vuelo : ListaVuelo.getInstancia().getListaVuelos()) {
-                if (vuelo.getCodAeropuertoEntrada().equals(idAeropEntrada) && vuelo.getCodAreopuertoSalida().equals(idAeropSalida)) {
+                if (vuelo.getDestino().equals(origen) && vuelo.getOrigen().equals(destino)) {
                     return true;
                 }
             }
@@ -123,11 +147,11 @@ public class Comprobaciones {
         }
     }
 
-    public Vuelo devolverVueloAeropuertos(String idAeropEntrada, String idAeropSalida) {
+    public Vuelo devolverVueloAeropuertos(String origen, String destino) {
         List<Vuelo> vuelosCoincidentes = new ArrayList<>();
 
         for (Vuelo vuelo : ListaVuelo.getInstancia().getListaVuelos()) {
-            if (vuelo.getCodAeropuertoEntrada().equals(idAeropEntrada) && vuelo.getCodAreopuertoSalida().equals(idAeropSalida)) {
+            if (vuelo.getDestino().contains(origen) && vuelo.getOrigen().contains(destino)) {
                 vuelosCoincidentes.add(vuelo);
             }
         }

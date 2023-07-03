@@ -21,17 +21,16 @@ public class GrafoVuelos {
     
     static ArrayList<String> aeropuertos = new ArrayList<>();
     
-    public void grafo() {
+    public void grafo(String origen, String destino) {
         Comprobaciones comprobaciones = new Comprobaciones();
         ArrayList<Double> precios = new ArrayList<>();
         double matrizA[][];
         
-        matrix();
+        matrix(origen, destino);
         matrizA = new double[aeropuertos.size()][aeropuertos.size()];
         System.out.println(aeropuertos.size());
         for (int i = 0; i < aeropuertos.size(); i++) {
             System.out.println(aeropuertos.get(i));
-            
         }
         
         
@@ -54,7 +53,12 @@ public class GrafoVuelos {
         }
         CaminosMinimos ruta = new CaminosMinimos();
         //ordenarListas(matrizA);
-        JOptionPane.showMessageDialog(null, ruta.algoritmoFloyd(matrizA));
+        String aeropst = "\n\nNumeros que representan los aeropuertos: \n";
+        for (int i = 0; i < aeropuertos.size(); i++) {
+            aeropst += (i + 1) + ") " + aeropuertos.get(i) + "\n";
+            
+        }
+        JOptionPane.showMessageDialog(null, ruta.algoritmoFloyd(matrizA) + aeropst);
     }
     
     public int convertirAEntero(String cadena) {
@@ -75,19 +79,20 @@ public class GrafoVuelos {
         return true;
     }
     
-    public void matrix() {
+    public void matrix(String ori, String dest) {
     ListaVuelo listaVuelos = ListaVuelo.getInstancia();
     for (int i = 0; i < listaVuelos.getListaVuelos().size(); i++) {
         boolean existe = false;
         Vuelo vuelo = listaVuelos.getListaVuelos().get(i);
         for (int j = 0; j < aeropuertos.size(); j++) {
-            if (aeropuertos.get(j).equals(listaVuelos.getListaVuelos().get(i).getCodAeropuertoEntrada())) {
+            if (aeropuertos.get(j).equals(listaVuelos.getListaVuelos().get(i).getOrigen())) {
                 existe = true;
                 break; // Salir del bucle una vez que se encuentra el aeropuerto
             }
         }
-        if (!existe) {
-            aeropuertos.add(listaVuelos.getListaVuelos().get(i).getCodAeropuertoEntrada());
+        if (!existe && listaVuelos.getListaVuelos().get(i).getOrigen().contains(ori)) {
+            System.out.println("ELPEPE");
+            aeropuertos.add(listaVuelos.getListaVuelos().get(i).getOrigen());
         }
     }
 
@@ -95,15 +100,17 @@ public class GrafoVuelos {
         boolean existe = false;
         Vuelo vuelo = listaVuelos.getListaVuelos().get(i);
         for (int j = 0; j < aeropuertos.size(); j++) {
-            if (aeropuertos.get(j).equals(listaVuelos.getListaVuelos().get(i).getCodAreopuertoSalida())) {
+            if (aeropuertos.get(j).equals(listaVuelos.getListaVuelos().get(i).getDestino())) {
                 existe = true;
                 break; // Salir del bucle una vez que se encuentra el aeropuerto
             }
         }
-        if (!existe) {
-            aeropuertos.add(listaVuelos.getListaVuelos().get(i).getCodAreopuertoSalida());
+        if (!existe  && listaVuelos.getListaVuelos().get(i).getDestino().contains(dest)) {
+            aeropuertos.add(listaVuelos.getListaVuelos().get(i).getDestino());
+            System.out.println("ETESECH");
         }
     }
+        System.out.println(ori + ", " + dest);
 }
 
     public void ordenarListas(ArrayList<Double>[][] matriz) {

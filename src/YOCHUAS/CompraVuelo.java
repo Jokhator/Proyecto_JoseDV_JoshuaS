@@ -217,7 +217,7 @@ public class CompraVuelo extends javax.swing.JFrame {
     private void btn_MostrarVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MostrarVuelosActionPerformed
         GrafoVuelos grafo = new GrafoVuelos();
         if (comprobaciones.existeCliente(this, txt_Pasaporte.getText())) {
-            grafo.grafo();
+            grafo.grafo(txt_PaisOrigen.getText(), txt_PaisDestino.getText());
         } else {
             JOptionPane.showMessageDialog(this, "El pasaporte digitado no coincide con ningun cliente registrado en el sistema.\n"
                     + "Favor Digitar un pasaporte valido para proceder con la busqueda de vuelos disponibles.");

@@ -596,33 +596,21 @@ public class RegistroVuelo extends javax.swing.JFrame {
         // TODO add your handling code here:
         // Obtener los valores de los campos de texto
         String idVuelo = txt_idVuelo.getText();
-
         String idPiloto = txt_idPiloto.getText();
-
         String idCopiloto = txt_idCopiloto.getText();
-
         String origen = txt_origen.getText();
-
         String destino = txt_destino.getText();
-
         String codAreopuertoSalida = txt_aeropuertoSalida.getText();
-
         String codAeropuertoEntrada = txt_aeropuertoEntrada.getText();
-
         String fechaSalida = sumarMeses(obtenerFechaActual());
         String fechaEntrada = sumarDias(fechaSalida);
-
         String horaSalida = generarHoraAleatoria();
         String horaEntrada = generarHoraLlegada(horaSalida, fechaSalida, fechaEntrada);
-
         String idAvion = txt_idAvion.getText();
-
+        
         int capacidad = comporbaciones.esInt(txt_capacidad.getText());
-
         double costoPasaje = comporbaciones.esDouble(txt_costoBoleto.getText());
-
         double costoTotalAerolinea = comporbaciones.esDouble(txt_costoTotal.getText());
-
         // Crear objeto Vuelo con los valores obtenidos
         Empleado piloto;
         Empleado copiloto;

@@ -320,12 +320,9 @@ public class RegistroCliente extends javax.swing.JFrame {
         String correo = txt_Correo.getText();
         String nacionalidad = txt_Nacionalidad.getText();
 
-        LocalDate fechaActual = LocalDate.now();
-        String fecha = fechaActual.getDayOfMonth() + "/" + fechaActual.getMonthValue() + "/" + fechaActual.getYear();
-
         Cliente cliente = new Cliente(pasaporte, nombre, edad, telefono, correo, nacionalidad);
 
-        if (comporbaciones.existeCliente(this, pasaporte) && telefono > 0) {
+        if (!comporbaciones.existeCliente(this, pasaporte) && telefono > 0) {
             listaClientes.getListaClientes().add(cliente);
         }
 
